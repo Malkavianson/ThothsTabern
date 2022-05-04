@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Test</title>
+		<meta charset='uft-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<!-- <link rel='icon' href=''> -->
+		<link rel='stylesheet' href='/css/style.css'>
+	</head>
+	<body>
+		<%- include('./partials/header.ejs') %>
+		<main>
+			<section id='usersPanel'>
+				<div>
+					<div>
+						<div id='oUH'>
+							<div id='dot'></div>
+							<div id='dash'></div>
+						</div>
+						<div id='oU'>
+							<% data.forEach((d) => { %>
+							<div class='user'>
+								<img src='<%= d.img %>' onclick='autoLogin(<%= d.id %>)'>
+								<span> @<%= d.user %> </span>
+							</div>
+							<% });%>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id='wb'>
+				<%- include('./partials/wb.ejs') %>
+				<%- include('./partials/login.ejs') %>
+				<%- include('./partials/register.ejs') %>
+			</section>
+		</main>
+		<%- include('./partials/footer.ejs') %>
+		<script src='/js/scripts.js'></script>
+	</body>
+</html>

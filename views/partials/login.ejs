@@ -1,0 +1,31 @@
+<div id='loginBox'>
+	<div>
+		<h1>Seja bem vindo de volta</h1>
+	</div>
+	<div>
+		<form id='login' action='/login' method='POST'>
+			<fieldset form='login' name='login'>
+				<legend>Login</legend>
+					<div>
+						<label for='user'>user</label>
+						<input class='input' autocomplete='auto' type='text' name='user' placeholder='username'>
+						<label for='pw'>senha</label>
+						<input class='input' autocomplete='current-password' type='password' name='pw' placeholder='*****' required>
+					</div>
+					<div>
+						<div>
+							<div>
+								<input type="checkbox" id="remember" name="remember">
+								<label for="remember">Lembrar?</label>
+							</div>
+							<a href='/forgotpass'>Esqueceu sua senha?</a>
+						</div>
+						<button type='submit'>Login</button>
+					</div>
+			</fieldset>
+		</form>
+	</div>
+	<div class='change' onclick="change('r')">
+		<span>Register</span>
+	</div>
+</div>

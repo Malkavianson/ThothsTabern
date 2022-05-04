@@ -1,0 +1,40 @@
+{
+  "name": "thothstabern",
+  "version": "1.0.0",
+  "description": "An app with funny tests for educational purpuse",
+  "main": "index.js",
+  "engines": {
+    "node": ">=14.x"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js -e html,css,js,ejs"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Malkavianson/ThothsTabern.git"
+  },
+  "keywords": [
+    "tests",
+    "funny",
+    "webapp"
+  ],
+  "author": "@malkavianson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Malkavianson/ThothsTabern/issues"
+  },
+  "homepage": "https://github.com/Malkavianson/ThothsTabern#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
+    "express": "^4.18.0",
+    "node": "^17.7.2",
+    "pg": "^8.7.3",
+    "sequelize": "^6.19.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

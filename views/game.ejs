@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Test</title>
+		<meta charset='uft-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<!-- <link rel='icon' href=''> -->
+		<link rel='stylesheet' href='/css/style.css'>
+	</head>
+	<body>
+		<%- include('./partials/header.ejs') %>
+		<main>
+			<section id='panel'>
+				<div id='profile'>
+					<div id='userPanel'>
+						<span> @<%= currentUser.user %> </span>
+						<img src='<%= currentUser.img %>'>
+					</div>
+					<div id='score'>
+						<div>
+							<div id='scoreNames'>
+								<div>
+									<span> Pontuação </span>
+								</div>
+								<div>
+									<span>@<%= score[0][0]%></span>
+									<span><%= score[0][1]%></span>
+									<span>1º - <%= score[0][2]%></span>
+								</div>
+								<% if (score[1]!=undefined){%>
+								<div>
+									<span>@<%= score[1][0]%></span>
+									<span><%= score[1][1]%></span>
+									<span>2º - <%= score[1][2]%></span>
+								</div>
+								<% }; %>
+								<% if (score[2]!=undefined){%>
+								<div>
+									<span>@<%= score[2][0]%></span>
+									<span><%= score[2][1]%></span>
+									<span>3º - <%= score[2][2]%></span>
+								</div>
+								<% }; %>
+								<% if (score[3]!=undefined){%>
+								<div>
+									<span>@<%= score[3][0]%></span>
+									<span><%= score[3][1]%></span>
+									<span>4º - <%= score[3][2]%></span>
+								</div>
+								<% }; %>
+								<% if (score[4]!=undefined){%>
+								<div>
+									<span>@<%= score[4][0]%></span>
+									<span><%= score[4][1]%></span>
+									<span>5º - <%= score[4][2]%></span>
+								</div>
+								<% }; %>
+							</div>
+						</div>
+						<div>
+							<div id='newWord'>
+								<span>add uma nova palavra</span>
+							</div>
+						</div>
+					</div>
+					<div id='words'>
+						<% list.forEach((i) => {%>
+						<span><%= i %></span>
+						<% })%>
+					</div>
+				</div>
+				<div id='game'>
+					
+				</div>
+			</section>
+		</main>
+		<%- include('./partials/footer.ejs') %>
+		<script src='/js/scripts.js'></script>
+	</body>
+</html>
