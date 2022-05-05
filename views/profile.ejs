@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Thot's tabern || Profile</title>
+		<meta charset='uft-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<link rel='icon' href='/img/icon.png'>
+		<link rel='stylesheet' href='/css/style.css'>
+	</head>
+	<body>
+		<%- include("./partials/header.ejs") %>
+		<main>
+			<div id='user_detalhes'>
+				
+			</div>
+			<%- include("./partials/userUpdate.ejs") %>
+		</main>
+		<%- include("./partials/footer.ejs") %>
+		<script type='text/javascript'> 
+			let user = JSON.parse(localStorage.getItem('user'));
+			document.onreadystatechange = function () {
+				if (document.readyState === 'complete') {
+					document.getElementById('user').value = user.username;
+					document.getElementById('name').value = user.name;
+					document.getElementById('img').value = user.img ;
+					document.getElementById('pw').value = user.pw;
+				};
+			};	
+		</script>
+		<script src='/js/scripts.js'></script>
+	</body>
+</html>

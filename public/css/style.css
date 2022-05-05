@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
+
 *{
 	margin: 0;
 	padding: 0;
@@ -6,6 +7,7 @@
     -moz-box-sizing: border-box;
 	-webkit-box-sizing: border-box;
 }
+
 @media (orientation: portrait){
 	html{
 		font-size: 1vh;
@@ -16,10 +18,12 @@
 		font-size: 0.7vw;
 	}
 }
+
 html{
 	font-family: 'Cormorant Garamond', serif;
 	text-align: center;
 }
+
 body{
 	height: auto;
 	width: 100vw;
@@ -27,6 +31,16 @@ body{
 	flex-direction: column;
 	justify-content: space-between;
 }
+body#loading_page{
+	height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+body#loading_page>a{
+	height: 25%;
+    aspect-ratio: 1;
+}
+
 header{
 	width: 100%;
 	height: 15vh;
@@ -37,22 +51,19 @@ header>div{
 	width: 95%;
 	display: flex;
 }
-/* header>div>div{ */
-	/* height: 100%; */
-	/* width: 95%; */
-	/* display: flex; */
-/* } */
-/* section#menu{ */
-	/* height: 5%; */
-	/* display: flex; */
-	/* flex-direction: row; */
-/* } */
+header>div>div{
+	height: 100%;
+	width: 45%;
+	display: flex;
+}
+
 main{
 	width: 100%;
 	height: 80vh;
 	display: flex;
 	flex-direction: column;
 }
+
 section{
 	width: 100%;
 	height: 50%;
@@ -63,6 +74,30 @@ section,section#usersPanel>div,section#usersPanel>div>div,div#oldUsers,footer{
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+}
+section#wb{
+	font-size: 2.5rem;
+}
+section#wb>div{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+section#wb>div>div{
+	width: 90%;
+	min-height: 10%;
+	font-weight: 700;
+}
+section#wb>div>div:nth-child(2){
+	height: 60%;
+	max-width: 350px;
+	font-weight: 400;
+}
+section#panel{
+	height: 100%;
+	width: 100%;
 }
 section#usersPanel>div,section#usersPanel>div>div{
 	width: 95%;
@@ -83,85 +118,12 @@ section#usersPanel>div>div>div{
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
-div#oUH{
-	height: 9.5%;
-	width: 99%;
-	background: #f2f2f2;
-	border-radius: 2rem 2rem 0 0;
-	justify-content: space-between;
-	padding: 0% 5%;
-}
-div#dot{
-	height: 30%;
-	width: 20%;
-	background: fuchsia;
-	display: flex;
-}
-div#dash{
-	height: 75%;
-	width: 10%;
-	background: cyan;
-	display: flex;
-}
-div#oU{
-	height: 89.5%;
-	width: 99%;
-	justify-content: space-around;
-	flex-wrap: wrap;
-	background: #f6f6f6;
-	border-radius: 0 0 2rem 2rem;
-}
-.user{
-	height: 40%;
-	aspect-ratio: 1;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	font-weight: 700;
-	font-style: italic;
-	font-size: 2rem;
-	-webkit-transition: transform 0.420s;
-	transition: transform 0.420s;
-}
-.user:hover{
-	transform: scale(1.1);
-}
-.user>img{
-	max-height: 80%;
-	aspect-ratio: 1;
-	border-radius: 5vh;
-}
-section#wb{
-	font-size: 2.5rem;
-}
-section#wb>div{
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-div#registerBox,div#loginBox{
-	display: none;
-}
-div#wbBox{
-	display: flex;
-}
-section#wb>div>div{
-	width: 90%;
-	min-height: 10%;
-	font-weight: 700;
-}
-section#wb>div>div:nth-child(2){
-	height: 60%;
-	max-width: 350px;
-	font-weight: 400;
-}
-.change,div#lr>div{
-	cursor: pointer;
-	user-select: none;
+section#usersPanel>div>div>div::-webkit-scrollbar {
+  width: 1rem;
+  background: rgba(190, 190, 190, 0.5);
 }
 
 form#login,form#register{
@@ -205,14 +167,59 @@ form#login>fieldset>div>div>div,form#register>fieldset>div>div>div{
 	display: flex;
     align-items: center;
 }
-.input{
-	height: 20%;
-	width: 70%;
-	border: none;
-	border-radius: 2rem;
-	padding: 0% 2%;
-	font-size: 1.5rem;
+form#update_user {
+	height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+form#update_user>fieldset {
+	height: 100%;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: none;
+	gap: 2%;
+}
+form#update_user>fieldset>legend {
+	font-size: 5rem;
+	font-weight: 700;
+}
+form#update_user>fieldset>button {
+	border: none;
+	background: #95cfb7;
+	height: 10%;
+	width: 40%;
+	border-radius: 2rem;
+}
+form#update_user>fieldset>div {
+	height: 80%;
+	width: 90%;
+	background: #f2f2f2;
+	display: flex;
+	flex-direction: column;
+	border-radius: 3rem;
+	align-items: center;
+	justify-content: space-evenly;
+}
+form#update_user>fieldset>div>label {
+	height: 10%;
+	width: 50%;
+	font-size: 3rem;
+	text-decoration: underline;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+a#link_profile{
+	text-decoration: none;
+	color: black
+}
+
 button#signin{
 	height: 30%;
 	width: 30%;
@@ -225,37 +232,24 @@ button#signin{
 button#signin:hover{
 	transform: scale(0.95);
 }
-div#words {
-	width: 100%;
-    height: 30%;
-	min-width: 123px;
+
+div#dash{
+	height: 75%;
+	width: 10%;
+	background: cyan;
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	justify-items: center;
-	align-items: center;
-    flex-wrap: wrap;
-    overflow: scroll;
-	gap: 1%;
-	padding: 0.5%;
 }
-div#words::-webkit-scrollbar {
-  width: 0.7rem;
-  background: rgba(255, 255, 255, 0.2);
-}
-
-div#words>span {
-	height: fit-content;
+div#dot{
+	height: 30%;
 	width: 20%;
-	background: white;
-	font-size: 1.5rem;
-	min-width: 120px;
-	/* max-height: 20px; */
-	text-transform: capitalize;
-	/* text-shadow: -0.1rem 0.2rem #5f5f5f; */
-	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+	background: fuchsia;
+	display: flex;
 }
-
+div#game{
+	height: 95%;
+	width: 70%;
+	background: blueviolet;
+}
 div#lr{
 	height: 40%;
 	display: flex;
@@ -280,10 +274,27 @@ div#lr>div:hover{
 	transform: scale(1.03);
 	box-shadow: inset 0 0 3rem #7d7d7d, 0 0 0.7rem #a9a9a9;
 }
-
-section#panel{
+div#menu{
 	height: 100%;
-	width: 100%;
+	width: 20%;
+	display: flex;
+	flex-direction: row;
+}
+div#oU{
+	height: 89.5%;
+	width: 99%;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	background: #f6f6f6;
+	border-radius: 0 0 2rem 2rem;
+}
+div#oUH{
+	height: 9.5%;
+	width: 99%;
+	background: #f2f2f2;
+	border-radius: 2rem 2rem 0 0;
+	justify-content: space-between;
+	padding: 0% 5%;
 }
 div#profile{
 	height: 95%;
@@ -295,6 +306,13 @@ div#profile{
 	align-items: center;
 	justify-content: space-between;
 	padding: 1% 0%;
+}
+div#profile>a {
+    height: 45%;
+    width: 95%;
+}
+div#registerBox,div#loginBox{
+	display: none;
 }
 div#score{
 	height: 20%;
@@ -357,8 +375,8 @@ div#scoreNames>div:hover {
 	z-index: 1;
 }
 div#userPanel {
-	height: 45%;
-    width: 95%;
+	height: 100%;
+    width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -373,10 +391,86 @@ div#userPanel>img {
     aspect-ratio: 1;
     border-radius: 4rem;
 }
-div#game{
-	height: 95%;
+div#user_update {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+div#wbBox{
+	display: flex;
+}
+div#words {
+	width: 100%;
+    height: 30%;
+	min-width: 123px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+    flex-wrap: wrap;
+    overflow: scroll;
+	gap: 1%;
+	padding: 0.5%;
+}
+div#words::-webkit-scrollbar {
+  width: 0.7rem;
+  background: rgba(255, 255, 255, 0.2);
+}
+div#words>span {
+	height: fit-content;
+	width: 20%;
+	background: white;
+	font-size: 1.5rem;
+	min-width: 120px;
+	/* max-height: 20px; */
+	text-transform: capitalize;
+	/* text-shadow: -0.1rem 0.2rem #5f5f5f; */
+	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+}
+
+.change,div#lr>div{
+	cursor: pointer;
+	user-select: none;
+}
+.input{
+	height: 20%;
 	width: 70%;
-	background: blueviolet;
+	border: none;
+	border-radius: 2rem;
+	padding: 0% 2%;
+	font-size: 1.5rem;
+}
+.inputup {
+	height: 10%;
+	width: 80%;
+	border: none;
+	border-radius: 2rem;
+	padding: 0% 5%;
+	font-size: 2rem;
+}
+.user{
+	height: 40%;
+	aspect-ratio: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	font-weight: 700;
+	font-style: italic;
+	font-size: 2rem;
+	-webkit-transition: transform 0.420s;
+	transition: transform 0.420s;
+}
+.user:hover{
+	transform: scale(1.1);
+}
+.user>img{
+	max-height: 80%;
+	aspect-ratio: 1;
+	border-radius: 5vh;
 }
 
 footer{

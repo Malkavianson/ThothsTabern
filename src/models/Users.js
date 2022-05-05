@@ -28,6 +28,10 @@ export const user = connection.define('users',{
 		type: Sequelize.INTEGER,
 		allowNull: true,		
 	},
+	words: {
+		type: Sequelize.STRING,
+		allowNull: true,		
+	},
 },{
 	freezeTableName: true,
 	createdAt: false,

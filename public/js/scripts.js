@@ -14,6 +14,5 @@ function change(a){
 			document.getElementById('registerBox').style.display = 'none';
 			document.getElementById('loginBox').style.display = 'none';
 			document.getElementById('wbBox').style.display = 'flex';
-	}
-}
-
+	};
+};

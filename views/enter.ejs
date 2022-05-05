@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Thot's tabern</title>
+		<meta charset='uft-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<link rel='icon' href='/img/icon.png'>
+		<link rel='stylesheet' href='/css/style.css'>
+	</head>
+	<body id='loading_page'>
+		<img src='img/loading.gif'>
+		<h1>CARREGANDO</h1>
+	</body>
+	<script type='text/javascript'> 
+		let current = <%- cookie %>; 
+		current = JSON.stringify(current);
+		localStorage.setItem('user', current ),
+		document.onreadystatechange = function () {
+		  if (document.readyState === 'complete') {
+			setTimeout(function() {
+				window.location.href = "/game";
+				}, 1000);
+		  }
+		}
+	</script>
+</html>

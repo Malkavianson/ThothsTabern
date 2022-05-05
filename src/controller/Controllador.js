@@ -1,26 +1,36 @@
 import { connection } from '../database/connection.js';
 import { user } from '../models/Users.js';
-import { usersWords } from '../models/Words.js';
 import w from '../database/words.js';
 
 const words = w.words;
-let current = {};
+// let current = {};
 
+async function l(){
+	let list = [];
+	const user = await us();
+	const l = Object.values(words[0]).map(function (user) {
+		for(let i=0;i<user.length;i++){
+			list.push(user[i]);
+		};
+	});
+	const u = Object.values(user).map(function (user){
+		const userList = user.words.split(",");
+		for (let word of userList) {
+			list.push(word.trim())
+		}
+	});
+	return list.sort();
+};
 async function us() {
-	let u = await connection.query('select * from users', {	model: user })
-	u = u.map((users) => users.dataValues)
-	return u;
+	const u = await connection.query('select * from users', {	model: user })
+	const n = u.map((users) => users.dataValues)
+	return n;
 };
-async function ws() {
-	let w = await connection.query('select * from words', {	model: usersWords })
-	w = w.map((words) => words.dataValues)
-	return w;
-};
+
 function d(users){
-	let ul = []
+	const ul = []
 	users.forEach( users => {
-		let u = {
-			id: users.id, 
+		const u = {
 			img: users.img, 
 			user: users.username,
 		};
@@ -29,7 +39,7 @@ function d(users){
 	return ul;
 };
 function c(u){
-	let user = {
+	const user = {
 		id: u.id,
 		user: u.username,
 		name: u.name,
@@ -62,7 +72,7 @@ function Register(r){
 	Object.defineProperties(this, {
 		username: {
 			enumerable: true,
-			value: r.user,
+			value: r.user.toLowerCase(),
 			writable: true,
 			configurable: true,
 		},
@@ -89,25 +99,54 @@ function Register(r){
 			value: 0,
 			writable: true,
 			configurable: true,
+		},
+		words: {
+			enumerable: true,
+			value: '',
+			writable: true,
+			configurable: true,
 		}
 	});	
 }
-
-async function l(){
-	let list = [];
-	const ul = await ws();
-	const l = Object.values(words[0]).map(function (user) {
-		for(let i=0;i<user.length;i++){
-			list.push(user[i]);
-		};
-	});
-	const u = Object.values(ul).map(function (user){
-		const userList = user.words.split(",");
-		for (let word of userList) {
-			list.push(word.trim())
+function Update(u,user){
+	Object.defineProperties(this, {
+		username: {
+			enumerable: true,
+			value: user.username,
+			writable: true,
+			configurable: true,
+		},
+		pw: {
+			enumerable: true,
+			value: u.pw,
+			writable: true,
+			configurable: true,
+		},
+		name: {
+			enumerable: true,
+			value: u.name,
+			writable: true,
+			configurable: true,
+		},
+		img: {
+			enumerable: true,
+			value: u.img,
+			writable: true,
+			configurable: true,
+		},
+		pts: {
+			enumerable: true,
+			value: user.pts,
+			writable: true,
+			configurable: true,
+		},
+		words: {
+			enumerable: true,
+			value: user.words,
+			writable: true,
+			configurable: true,
 		}
-	});
-	return list.sort();
+	});	
 };
 
 export const getIndex = async (req,res) => {
@@ -117,40 +156,52 @@ export const getIndex = async (req,res) => {
 };
 export const getGame = async (req,res) => {
 	const users = await us();
-	let currentUser = c(current);
-	if (currentUser.id===undefined){
-		currentUser={user: 'convidado', img: 'img/profile_pictures/default.png' };
-	};
 	const list = await l();
 	const score = s(users);
-	res.render('game', {list, currentUser, score});
+	res.render('game', {list, score});
+};
+export const getProfile = async (req,res) => {
+	res.render('profile', {});
 };
 
+export const postUpdateProfile = async (req,res) => {
+	const u = req.body;
+	let users = await us();
+	const userUpdated = users.find(user => user.username === u.user);
+	const updated = new Update(u,userUpdated);
+	const userUpdating = await user.update(updated, {where: { id: userUpdated.id }});
+	users = await us();
+	const userCookie = users.find(user => user.username === u.user);
+	const cookie = JSON.stringify(userCookie);
+	res.render('enter', { cookie });
+};
 export const postRegister = async (req,res) => {
 	const r = req.body;
-
 	if (!r){
 		res.redirect('/');
 	};
 	const newUser = new Register(r);
-	user.create(newUser);
+	await user.create(newUser);
 	const users = await us();
-	current = users.find(users => users.username === newUser.username);
-	res.redirect('/game');
+	const newCurrent = users.find(users => users.username === newUser.username);
+	const cookie = JSON.stringify(newCurrent);
+	res.render('enter', { cookie });
 };
 export const postLogin = async (req,res) =>{
 	const u = req.body;
 	const users = await us();
-	const user = { user: u.user.trim(), pw: u.pw, remember: u.remember };
+	const user = { user: u.user.trim().toLowerCase(), pw: u.pw, remember: u.remember };
 	const verifyLogin = users.find(users => users.username === user.user);
 	if(verifyLogin!=undefined){
 		if(verifyLogin.pw === user.pw){
-			current = verifyLogin;
-			res.redirect('/game');
+			const cookie = JSON.stringify(verifyLogin);
+			res.render('enter', { cookie });
 		}else{
 			console.log('senha incorreta')
+			res.send('senha incorreta');
 		}
-	}else{ 
-		console.log('Email não existe')
+	}else{
+		console.log('login não existe')
+		res.send('login incorreto')
 	};
 };
