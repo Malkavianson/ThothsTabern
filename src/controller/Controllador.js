@@ -161,7 +161,7 @@ export const getGame = async (req,res) => {
 	res.render('game', {list, score});
 };
 export const getProfile = async (req,res) => {
-	res.render('profile', {});
+	res.render('profile');
 };
 
 export const postUpdateProfile = async (req,res) => {
@@ -180,12 +180,21 @@ export const postRegister = async (req,res) => {
 	if (!r){
 		res.redirect('/');
 	};
+	console.log(r)
 	const newUser = new Register(r);
-	await user.create(newUser);
-	const users = await us();
-	const newCurrent = users.find(users => users.username === newUser.username);
-	const cookie = JSON.stringify(newCurrent);
-	res.render('enter', { cookie });
+	try{
+		await user.create(newUser);
+		const users = await us();
+		const newCurrent = users.find(users => users.username === newUser.username);
+		const cookie = JSON.stringify(newCurrent);
+		res.render('enter', { cookie });
+	}catch(err){
+		console.log(err.message)
+		// setTimeout(() => {
+			res.redirect('/');
+		// }, 1000);
+
+	}
 };
 export const postLogin = async (req,res) =>{
 	const u = req.body;
@@ -198,10 +207,14 @@ export const postLogin = async (req,res) =>{
 			res.render('enter', { cookie });
 		}else{
 			console.log('senha incorreta')
-			res.send('senha incorreta');
+			// res.send('senha incorreta');
+			res.redirect('/');
 		}
 	}else{
 		console.log('login não existe')
-		res.send('login incorreto')
+		// res.send('login incorreto')
+		// res.set('Content-Type', 'text/html')
+		// res.send(Buffer.from('<p>some html</p>'))
+		res.redirect('/');
 	};
 };

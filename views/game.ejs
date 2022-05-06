@@ -16,7 +16,9 @@
 					<a id='link_profile' href='/profile'><div id='userPanel'>
 						<span id='title_user'></span>
 						<img id='title_img'src=''>
+						
 					</div></a>
+					<div id='logoff' onclick='logoff()'> <span>logoff</span> </div>
 					<%- include("./partials/score.ejs") %>
 					<div id='words'>
 						<% list.forEach((i) => {%>
@@ -34,17 +36,7 @@
 			let user = JSON.parse(localStorage.getItem('user'));
 			document.onreadystatechange = function () {
 				if (document.readyState === 'complete') {
-					switch(user){
-						case null:
-							document.getElementById('title_user').innerText = 'convidado';
-							document.getElementById('title_img').src = 'img/profile_pictures/default.png';
-							document.getElementById('link_profile').href = '/';
-							break;
-						default:
-							document.getElementById('title_user').innerText = user.username;
-							document.getElementById('title_img').src = user.img;
-							break;
-					};
+					game(user);
 				};
 			};
 		</script>

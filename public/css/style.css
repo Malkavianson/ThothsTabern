@@ -98,6 +98,7 @@ section#wb>div>div:nth-child(2){
 section#panel{
 	height: 100%;
 	width: 100%;
+	gap: 1%;
 }
 section#usersPanel>div,section#usersPanel>div>div{
 	width: 95%;
@@ -122,8 +123,9 @@ section#usersPanel>div>div>div{
     overflow-x: hidden;
 }
 section#usersPanel>div>div>div::-webkit-scrollbar {
-  width: 1rem;
-  background: rgba(190, 190, 190, 0.5);
+	width: 1rem;
+	background: rgba(190, 190, 190, 0.1);
+	border-radius: 10rem;
 }
 
 form#login,form#register{
@@ -145,7 +147,7 @@ form#login>fieldset,form#register>fieldset{
 	border: none;
 }
 form#login>fieldset>div,form#register>fieldset>div{
-	height: 45%;
+	height: 85%;
 	width: 95%;
 	display: flex;
 	flex-direction: column;
@@ -220,6 +222,13 @@ a#link_profile{
 	color: black
 }
 
+h2#details_pts {
+	height: fit-content;
+    width: 80%;
+    text-align: center;
+    font-size: 5rem;
+}
+
 button#signin{
 	height: 30%;
 	width: 30%;
@@ -239,6 +248,16 @@ div#dash{
 	background: cyan;
 	display: flex;
 }
+div#details_words>span {
+	font-size: 5rem;
+	height: fit-content;
+	text-shadow: 0 0 2.5rem black;
+	text-decoration: underline;
+}
+div#details_words::-webkit-scrollbar {
+  width: 0.5rem;
+  background: rgba(90, 90, 90, 0.5);
+}
 div#dot{
 	height: 30%;
 	width: 20%;
@@ -250,6 +269,18 @@ div#game{
 	width: 70%;
 	background: blueviolet;
 }
+div#logoff {
+	height: 5%;
+	display: flex;width: 50%;
+	margin: 2%;
+	box-shadow: 0 0 1rem 1rem white, inset 0 0 2rem 0.5rem black;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10rem;
+	font-size: 2rem;
+	cursor: pointer;
+	user-select: none;
+}
 div#lr{
 	height: 40%;
 	display: flex;
@@ -259,8 +290,8 @@ div#lr{
     flex-wrap: nowrap;
 }
 div#lr>div{
-	height: 50%;
-	width: 20%;
+	height: 75%;
+	width: 30%;
 	border-radius: 2rem;
 	display: flex;
 	align-items: center;
@@ -269,6 +300,8 @@ div#lr>div{
 	-webkit-box-shadow: inset 0 0 0.56rem #7d7d7d, 0 0 0.7rem #a9a9a9;
 	-webkit-transition: transform 0.840s, -webkit-box-shadow 0.840s, box-shadow 0.840s;
 	transition: transform 0.840s, -webkit-box-shadow 0.840, box-shadow 0.840s;
+	cursor: pointer;
+	user-select: none;
 }
 div#lr>div:hover{
 	transform: scale(1.03);
@@ -296,11 +329,18 @@ div#oUH{
 	justify-content: space-between;
 	padding: 0% 5%;
 }
+div#oUH>h1{
+	height: 60%;
+	width: 100%;
+	font-size: 1.5rem;
+	font-weight: 700;
+	
+}
 div#profile{
 	height: 95%;
 	width: 25%;
 	min-width: 125px;
-	background: brown;
+	/* background: brown; */
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -317,7 +357,7 @@ div#registerBox,div#loginBox{
 div#score{
 	height: 20%;
     width: 95%;
-    background: cornflowerblue;
+    /* background: cornflowerblue; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -327,7 +367,7 @@ div#score>div{
 	height: 90%;
 	width: 48%;
 	background: white;
-}
+box-shadow: 0 0 1rem black;border-radius: 1rem;}
 div#scoreNames{
 	height: 100%;
 	width: 100%;
@@ -340,6 +380,11 @@ div#scoreNames{
 	padding: 3% 0%;
 	overflow: auto;
 }
+div#scoreNames::-webkit-scrollbar {
+  width: 0.8rem;
+  background: rgba(90, 90, 90, 0.7);
+  border-radius: 10rem;
+}
 div#scoreNames>div{
 	height: 4rem;
 	width: 90%;
@@ -347,7 +392,7 @@ div#scoreNames>div{
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
-	box-shadow: 0 0 1rem magenta, 0 0 2rem #1f1f1f;
+	box-shadow: 0 0 1rem #9a9a9a, 0 0 2rem #1f1f1f;
 	color: #afafaf;
 	border-radius: 2rem;
 	transition: transform 0.840s;
@@ -367,12 +412,63 @@ div#scoreNames>div:nth-child(4){
 	color: burlywood;
 }
 div#scoreNames>div:hover {
-	height: 90%;
+	height: fit-content;
 	width: 95%;
-	font-size: 1.5rem;
+	font-size: 2.3rem;
 	border-radius: 0.5rem;
 	background-color: #3f3f3f;
 	z-index: 1;
+	padding: 2%;
+}
+div#user_detalhes {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	background: #f1f1f1;
+	display: none;
+	align-items: center;
+	justify-content: space-around;
+}
+div#user_detalhes>div {
+    height: 80%;
+    width: 45%;
+    padding: 5% 0%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+	text-shadow: 0 0 3rem black;
+	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+}
+div#user_detalhes>div:nth-child(3){
+    position: absolute;
+	height: 8%;
+    width: 15%;
+    top: 1%;
+    right: 1%;
+    border-radius: 1.5rem;
+    font-size: 2rem;
+	box-shadow: inset 0 0 2rem #131313, 0 0 1.2rem #171717;
+	-webkit-box-shadow: inset 0 0 2rem #131313, 0 0 1.2rem #171717;
+	-webkit-transition: transform 0.840s, -webkit-box-shadow 0.840s, box-shadow 0.840s;
+	transition: transform 0.840s, -webkit-box-shadow 0.840, box-shadow 0.840s;
+	cursor: pointer;
+	user-select: none;
+}
+div#lr>div:hover{
+	transform: scale(1.03);
+	box-shadow: inset 0 0 3rem #7d7d7d, 0 0 0.7rem #a9a9a9;
+}
+div#user_detalhes>div>div {
+	height: 40%;
+	width: 85%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: 3rem;
+	overflow-y: auto;
+    overflow-x: overlay;
 }
 div#userPanel {
 	height: 100%;
@@ -382,8 +478,7 @@ div#userPanel {
 	align-items: center;
 	align-content: center;
 	justify-content: space-around;
-    font-size: 2rem;
-    background: powderblue;
+    font-size: 5rem;
 }
 div#userPanel>img {
     max-width: 95%;
@@ -412,11 +507,16 @@ div#words {
 	align-items: center;
     flex-wrap: wrap;
     overflow: scroll;
-	gap: 1%;
+	gap: 6%;
 	padding: 0.5%;
+	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
+	border-radius: 4rem;
+}
+div#words>span:hover {
+	font-size: 3rem;
 }
 div#words::-webkit-scrollbar {
-  width: 0.7rem;
+  width: 0.1rem;
   background: rgba(255, 255, 255, 0.2);
 }
 div#words>span {
@@ -428,10 +528,19 @@ div#words>span {
 	/* max-height: 20px; */
 	text-transform: capitalize;
 	/* text-shadow: -0.1rem 0.2rem #5f5f5f; */
-	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+	box-shadow: inset 0 0 2.5rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+	border-radius: 2rem;
 }
 
-.change,div#lr>div{
+img#details_img {
+	max-width: 85%;
+	max-height: 50%;
+	aspect-ratio: 1;
+	border-radius: 5rem;
+	border: ridge 0.4rem #0f0a1a;
+}
+
+.change{
 	cursor: pointer;
 	user-select: none;
 }

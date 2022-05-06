@@ -12,16 +12,11 @@
 		<img src='img/loading.gif'>
 		<h1>CARREGANDO</h1>
 	</body>
+	<script src='/js/scripts.js'></script>
 	<script type='text/javascript'> 
 		let current = <%- cookie %>; 
 		current = JSON.stringify(current);
-		localStorage.setItem('user', current ),
-		document.onreadystatechange = function () {
-		  if (document.readyState === 'complete') {
-			setTimeout(function() {
-				window.location.href = "/game";
-				}, 1000);
-		  }
-		}
+		localStorage.setItem('user', current );
+		redirect();
 	</script>
 </html>
