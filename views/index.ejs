@@ -37,6 +37,13 @@
 			</section>
 		</main>
 		<%- include("./partials/footer.ejs") %>
-		<script src="/js/scripts.js"></script>
 	</body>
+	<script src="/js/scripts.js"></script>
+	<script type='text/javascript'>
+		document.onreadystatechange = function () {
+			if (document.readyState === 'complete') {
+				isLogged(user);
+			};
+		};	
+	</script>
 </html>

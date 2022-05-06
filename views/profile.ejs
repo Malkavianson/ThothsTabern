@@ -9,40 +9,14 @@
 		<link rel='stylesheet' href='/css/style.css'>
 	</head>
 	<body>
+		<%- include("./partials/dp.ejs") %>
 		<%- include("./partials/header.ejs") %>
 		<main>
-			<div id='user_detalhes'>
-				<div>
-					<img id='details_img' src="" alt="profile">
-					<div>
-						<h1 id='details_id'>
-							id
-						</h1>
-						<h2 id='details_username'>
-							username
-						</h2>
-						<h3 id='details_name'>
-							name
-						</h3>
-					</div>
-				</div>
-				<div>
-					<h2 id='details_pts'>
-						pontuação
-					</h2>
-					<div id='details_words'>
-						<span>Suas palavras</span>
-					</div>
-				</div>
-				<div>
-					<span>Alterar usuário</span>
-				</div>
-			</div>
+			<%- include("./partials/userDetalhes.ejs") %>
 			<%- include("./partials/userUpdate.ejs") %>
 		</main>
 		<%- include("./partials/footer.ejs") %>
 		<script type='text/javascript'>
-			let user = JSON.parse(localStorage.getItem('user'));
 			document.onreadystatechange = function () {
 				if (document.readyState === 'complete') {
 					updatedetails(user);

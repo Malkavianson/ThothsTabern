@@ -3,7 +3,6 @@ import { user } from '../models/Users.js';
 import w from '../database/words.js';
 
 const words = w.words;
-// let current = {};
 
 async function l(){
 	let list = [];
@@ -32,7 +31,10 @@ function d(users){
 	users.forEach( users => {
 		const u = {
 			img: users.img, 
+			name: users.name,
 			user: users.username,
+			pts: users.pts,
+			words: users.words
 		};
 		ul.push(u);
 	});
@@ -157,8 +159,9 @@ export const getIndex = async (req,res) => {
 export const getGame = async (req,res) => {
 	const users = await us();
 	const list = await l();
+	const data = d(users);
 	const score = s(users);
-	res.render('game', {list, score});
+	res.render('game', {list, score, data});
 };
 export const getProfile = async (req,res) => {
 	res.render('profile');
@@ -180,7 +183,6 @@ export const postRegister = async (req,res) => {
 	if (!r){
 		res.redirect('/');
 	};
-	console.log(r)
 	const newUser = new Register(r);
 	try{
 		await user.create(newUser);
@@ -215,6 +217,16 @@ export const postLogin = async (req,res) =>{
 		// res.send('login incorreto')
 		// res.set('Content-Type', 'text/html')
 		// res.send(Buffer.from('<p>some html</p>'))
+		res.redirect('/');
+	};
+};
+export const postDelete = async (req,res) =>{
+	const d = req.body;
+	try{
+		await user.destroy({where: {id: req.body.id} });
+		res.redirect('/');
+	}catch(err){
+		console.log(err.message)
 		res.redirect('/');
 	};
 };

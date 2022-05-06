@@ -1,0 +1,25 @@
+<div id='deletepopup'>
+	<div  onclick='dProfile("desistir")'>
+		<img src='img/delete.png'>
+		<h2>Uma vez DELETADO</br>o perfil não poderá ser recuperado</h2>
+		<div id='desistir'> <span> voltar </span> </div>
+	</div>
+	<div>
+		<form id='delete' action='/delete' method='POST'>
+			<legend>CONFIRME COM SUA SENHA</legend>
+			<fieldset form='delete' name='delete'>
+				<div>
+					<label class='inputdel' for='id'>Registro nº</label>
+					<input class='inputdel' id='inputid' type='text' name='id' readonly>
+					<label class='inputdel' for='user'>Usuário</label>
+					<input class='inputdel' id='inputuser' type='text' name='name' readonly>					
+				</div>
+				<div>
+					<label class='inputdel' for='pw'>senha</label>
+					<input class='inputdel' id='inputpw' type='password' name='pw' placeholder='*****' required>
+				</div>
+				<button type='submit' onclick='logoff("n")'>DELETAR</button>
+			</fieldset>
+		</form>
+	</div>
+</div>

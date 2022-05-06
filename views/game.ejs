@@ -14,26 +14,50 @@
 			<section id='panel'>
 				<div id='profile'>
 					<a id='link_profile' href='/profile'><div id='userPanel'>
-						<span id='title_user'></span>
+						<div>
+							<span id='fakebutton'>profile</span>
+							<span id='title_user'></span>
+						</div>
 						<img id='title_img'src=''>
 						
 					</div></a>
-					<div id='logoff' onclick='logoff()'> <span>logoff</span> </div>
+					<div id='logoff' onclick='logoff("s")'> <span>logoff</span> </div>
 					<%- include("./partials/score.ejs") %>
+				</div>
+				<div id='game'>
+					<div id='play'>
+						<div>
+							<div id='newWord'>
+								<span>add uma nova palavra</span>
+							</div>
+							<div id='init'>
+								<span>onde vai chamar o jogo</span>
+							</div>
+						</div>
+					</div>
+					<div id='allPlayers'>
+						<div id="oUH">
+							<h1> Peripatéticos da Taberna </h1>
+						</div>
+						<div id="mini">
+							<% data.forEach((d) => { %>
+							<div class="mini_user">
+								<img src="<%= d.img %>">
+								<span> @<%= d.user %> </span>
+							</div>
+							<% });%>
+						</div>
+					</div>
 					<div id='words'>
 						<% list.forEach((i) => {%>
 						<span><%= i %></span>
 						<% })%>
 					</div>
 				</div>
-				<div id='game'>
-					
-				</div>
 			</section>
 		</main>
 		<%- include("./partials/footer.ejs") %>
 		<script type='text/javascript'> 
-			let user = JSON.parse(localStorage.getItem('user'));
 			document.onreadystatechange = function () {
 				if (document.readyState === 'complete') {
 					game(user);
