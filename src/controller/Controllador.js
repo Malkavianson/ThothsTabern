@@ -3,6 +3,7 @@ import { user } from '../models/Users.js';
 import w from '../database/words.js';
 
 const words = w.words;
+let erro = 'erro';
 
 async function l(){
 	let list = [];
@@ -154,53 +155,94 @@ function Update(u,user){
 export const getIndex = async (req,res) => {
 	const users = await us();
 	const data = d(users);
-	res.render('index', { data });
+	res.render('index', { erro, data });
 };
 export const getGame = async (req,res) => {
 	const users = await us();
 	const list = await l();
 	const data = d(users);
 	const score = s(users);
-	res.render('game', {list, score, data});
+	const everybody = JSON.stringify(data);
+	res.render('game', {list, score, data, everybody});
 };
 export const getProfile = async (req,res) => {
 	res.render('profile');
 };
 
+export const postNewword = async (req, res) => {
+	const w = req.body;
+	try{
+		if( !w.user || !w.word ){
+			console.log('erro')
+			res.redirect('/game')
+		}else{
+			let users = await us();
+			const data = d(users);
+			const userWord = data.find(user => user.user === w.user);
+			userWord.words += ','+w.word
+			userWord.pts++;
+			const userw = users.find(user => user.username === userWord.user);
+			const userUpdating = await user.update(userWord, {where: { id: userw.id }});
+			users = await us();
+			const userCookie = users.find(user => user.username === w.user);
+			const cookie = JSON.stringify(userCookie);
+			res.render('enter', { cookie });
+		};
+	}catch(err){console.log(err); res.redirect('/')};
+
+};
 export const postUpdateProfile = async (req,res) => {
 	const u = req.body;
-	let users = await us();
-	const userUpdated = users.find(user => user.username === u.user);
-	const updated = new Update(u,userUpdated);
-	const userUpdating = await user.update(updated, {where: { id: userUpdated.id }});
-	users = await us();
-	const userCookie = users.find(user => user.username === u.user);
-	const cookie = JSON.stringify(userCookie);
-	res.render('enter', { cookie });
+	try{
+		if( !u.user || !u.name || !u.img || !u.pw ){
+			res.redirect('/')
+		}else{
+			let users = await us();
+			const data = d(users);
+			const userUpdated = users.find(user => user.username === u.user);
+			const updated = new Update(u,userUpdated);
+			const userUpdating = await user.update(updated, {where: { id: userUpdated.id }});
+			users = await us();
+			const userCookie = users.find(user => user.username === u.user);
+			const cookie = JSON.stringify(userCookie);
+			res.render('enter', { cookie });
+		};
+	}catch(err){console.log(err); res.redirect('/')};
 };
 export const postRegister = async (req,res) => {
+	let users = await us();
+	const data = d(users);
 	const r = req.body;
 	if (!r){
-		res.redirect('/');
+			erro = 'reg';
+			res.render('index', { erro, data });
 	};
-	const newUser = new Register(r);
 	try{
-		await user.create(newUser);
-		const users = await us();
-		const newCurrent = users.find(users => users.username === newUser.username);
-		const cookie = JSON.stringify(newCurrent);
-		res.render('enter', { cookie });
-	}catch(err){
-		console.log(err.message)
-		// setTimeout(() => {
-			res.redirect('/');
-		// }, 1000);
-
-	}
+		if( !r.user || !r.pw || !r.name ){
+			erro = 'reg';
+			res.render('index', { erro, data });
+		}else{
+			try{
+				const newUser = new Register(r);
+				await user.create(newUser);
+				users = await us();
+				const newCurrent = users.find(users => users.username === newUser.username);
+				console.log()
+				const cookie = JSON.stringify(newCurrent);
+				res.render('enter', { cookie });
+			}catch(err){
+				console.log('não criou')
+				console.log(err)
+					erro = 'ainda';
+					res.render('index', { erro, data });
+			};
+		};
+	}catch(err){ console.log(err)};
 };
 export const postLogin = async (req,res) =>{
-	const u = req.body;
 	const users = await us();
+	const data = d(users);
+	const u = req.body;
 	const user = { user: u.user.trim().toLowerCase(), pw: u.pw, remember: u.remember };
 	const verifyLogin = users.find(users => users.username === user.user);
 	if(verifyLogin!=undefined){
@@ -208,16 +250,16 @@ export const postLogin = async (req,res) =>{
 			const cookie = JSON.stringify(verifyLogin);
 			res.render('enter', { cookie });
 		}else{
-			console.log('senha incorreta')
-			// res.send('senha incorreta');
-			res.redirect('/');
-		}
+			erro = 'senha incorreta';
+			console.log(erro)
+			const users = await us();
+			res.render('index', { erro, data });
+		};
 	}else{
-		console.log('login não existe')
-		// res.send('login incorreto')
-		// res.set('Content-Type', 'text/html')
-		// res.send(Buffer.from('<p>some html</p>'))
-		res.redirect('/');
+		erro = 'login não existe'
+		console.log(erro);
+		const users = await us();
+		res.render('index', { erro, data });
 	};
 };
 export const postDelete = async (req,res) =>{

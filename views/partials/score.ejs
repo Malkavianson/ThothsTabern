@@ -4,11 +4,13 @@
 			<div>
 				<span> Pontuação </span>
 			</div>
+			<% if (score[0]!=undefined){%>
 			<div>
 				<span>@<%= score[0][0]%></span>
 				<span><%= score[0][1]%></span>
 				<span>1º - <%= score[0][2]%></span>
 			</div>
+			<% }; %>
 			<% if (score[1]!=undefined){%>
 			<div>
 				<span>@<%= score[1][0]%></span>

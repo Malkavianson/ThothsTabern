@@ -7,10 +7,12 @@
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<link rel='icon' href='/img/icon.png'>
 		<link rel='stylesheet' href='/css/style.css'>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
 	<body>
 		<%- include("./partials/header.ejs") %>
 		<main>
+		<%- include("./partials/usersinfo.ejs") %>
 			<section id='panel'>
 				<div id='profile'>
 					<a id='link_profile' href='/profile'><div id='userPanel'>
@@ -27,11 +29,11 @@
 				<div id='game'>
 					<div id='play'>
 						<div>
-							<div id='newWord'>
-								<span>add uma nova palavra</span>
+							<div id='handler'>
+								<%- include("./partials/newword.ejs") %>
 							</div>
 							<div id='init'>
-								<span>onde vai chamar o jogo</span>
+								<span>GAME</span>
 							</div>
 						</div>
 					</div>
@@ -41,7 +43,7 @@
 						</div>
 						<div id="mini">
 							<% data.forEach((d) => { %>
-							<div class="mini_user">
+							<div class="mini_user" onclick="showUser('o','<%= d.user %>')">
 								<img src="<%= d.img %>">
 								<span> @<%= d.user %> </span>
 							</div>
@@ -65,5 +67,8 @@
 			};
 		</script>
 		<script src='/js/scripts.js'></script>
+		<script type='text/javascript'> 
+			const everybody = <%- everybody %>;
+		</script>
 	</body>
 </html>

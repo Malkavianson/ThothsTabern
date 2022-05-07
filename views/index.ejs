@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Thot's tabern</title>
+		<title>Thoth's tabern</title>
 		<meta charset='uft-8'>
 		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
 		<link rel='icon' href='/img/icon.png'>
 		<link rel='stylesheet' href='/css/style.css'>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</head>
 	<body>
 		<%- include("./partials/header.ejs") %>
@@ -40,10 +41,10 @@
 	</body>
 	<script src="/js/scripts.js"></script>
 	<script type='text/javascript'>
+		const err = '<%- erro %>'
 		document.onreadystatechange = function () {
-			if (document.readyState === 'complete') {
-				isLogged(user);
-			};
+			isLogged(user);
+			error();
 		};	
 	</script>
 </html>

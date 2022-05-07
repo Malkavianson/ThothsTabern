@@ -1,5 +1,27 @@
 let user = JSON.parse(localStorage.getItem('user'));
 
+function showUser(a,user){
+	switch(a){
+		case 'o':
+			const auser = everybody.find(users => users.user === user);
+			document.getElementById('users_img').src = auser.img;
+			document.getElementById('users_username').innerText = 'User: '+auser.user;
+			document.getElementById('users_name').innerText = 'Nome: '+auser.name;
+			document.getElementById('users_pts').innerText = 'Pontos: '+auser.pts;
+			document.getElementById('users_words').innerHTML = '<span>Palavras:</span></br>'
+			console.log(auser)
+			const words = auser.words.split(',');
+			words.forEach((w)=> {
+				document.getElementById('users_words').innerHTML += '<span>'+w.trim()+'</span></br>';
+			});
+			document.getElementById('users_info').style.display = 'flex';
+			break;
+		case 'c':
+			document.getElementById('users_info').style.display = 'none';
+			break;
+	};
+};
+
 function dProfile(d){
 	switch(d){
 		case 'desistir':
@@ -23,9 +45,42 @@ function cProfile(a){
 			break;
 	};
 };
+function error (err){
+	if (document.readyState === 'complete') {
+	console.log(err)
+		switch(err){
+			case 'erro':
+		
+				break;
+			case 'senha incorreta':
+				Swal.fire(
+					'Sua entrada não foi permitida',
+					'Parece que você se esqueceu da sua senha',
+				)	
+				break;
+			case 'login não existe':
+				Swal.fire(
+					'Você ainda não é um Peripatético',
+					'Você precisa se apresentar para entrar na taberna',
+				)	
+				break;
+			case 'reg':
+				Swal.fire(
+					'Você precisa informar seus dados',
+					' para finalizar o seu registro ',
+				)	
+				break;
+			case 'ainda':
+				Swal.fire(
+					'USERNAME JÁ REGISTRADO!',
+					'Escolha outro nome de usuário',
+				)	
+				break;
+		};
+	};
+};
 
 function isLogged(user){
-	console.log(user)
 	if(user!=undefined){
 		window.location.href = "/game";
 	};
@@ -67,12 +122,17 @@ function redirect(){
 		};
 	};
 };
-function game(){
+function game(user){
 	switch(user){
 		case null:
 				window.location.href = "/";
 			break;
 		default:
+			Swal.fire(
+				'Bem vindo à Taberna',
+				'',
+			);
+			document.getElementById('wordId').value = user.username;
 			document.getElementById('title_user').innerText = '@'+user.username;
 			document.getElementById('title_img').src = user.img;
 			break;
@@ -82,7 +142,7 @@ function game(){
 function updatedetails(user){
 	let words = user.words.split(',');
 	words.forEach((w)=> {
-		document.getElementById('details_words').innerHTML += '<span>'+w.trim()+'</span>';
+		document.getElementById('details_words').innerHTML += '<span>'+w.trim()+'</span></br>';
 	});
 	document.getElementById('details_img').src = user.img;
 	document.getElementById('details_id').innerText = 'ID: '+user.id;

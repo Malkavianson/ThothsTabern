@@ -6,11 +6,11 @@
 					<label for='user'>USERNAME</label>
 					<input class='inputup' id='user' type='text' name='user' placeholder='' readonly>
 					<label for='name'>NOME</label>
-					<input class='inputup' id='name' type='text' name='name' placeholder='yourname' required>
+					<input class='inputup' minlength='1' maxlength='15' id='name' type='text' name='name' placeholder='yourname' required>
 					<label for='img'>link imagem</label>
-					<input class='inputup' id='img' type='text' name='img' placeholder='link for image' required>
+					<input class='inputup' id='img' minlength='1' maxlength='150' type='url' name='img' placeholder='link for image' required>
 					<label for='pw'>SENHA</label>
-					<input class='inputup' id='pw' type='password' name='pw' placeholder='*****' required>
+					<input class='inputup' id='pw' minlength='1' maxlength='10' type='password' name='pw' placeholder='*****' required>
 				</div>
 				<button type='submit'>Atualizar</button>
 		</fieldset>

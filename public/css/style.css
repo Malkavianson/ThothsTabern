@@ -27,6 +27,19 @@
 		transform: scale(1.2)
 	}
 }
+@keyframes users{
+	from {
+		transform: scale(0);
+		height: 1%;
+		width: 1%;
+	}
+	to{
+		transform: scale(1);
+		height: 75%;
+		width: 90%;
+
+	}
+}
 
 html{
 	font-family: 'Cormorant Garamond', serif;
@@ -53,7 +66,7 @@ body#loading_page>a{
 header{
 	width: 100%;
 	height: 15vh;
-	background: #95cfb7;
+	background: #54786A;
 }
 header>div{
 	height: 100%;
@@ -67,6 +80,7 @@ header>div>div{
 }
 
 main{
+	position: relative;
 	width: 100%;
 	height: 80vh;
 	display: flex;
@@ -76,7 +90,7 @@ main{
 section{
 	width: 100%;
 	height: 50%;
-	background-color: #f2f2f2;
+	background-color: #f1f1f1;
 }
 section,section#usersPanel>div,section#usersPanel>div>div,div#oldUsers,footer{
 	display: flex;
@@ -116,8 +130,10 @@ section#usersPanel>div,section#usersPanel>div>div{
 }
 section#usersPanel>div>div{
 	flex-direction: column;
+	justify-content: space-between;
 	border-radius: 2rem;
 	background: #e5e5e5;
+	justify-content: space-between;
 	box-shadow: inset 0 0 0.8rem #afafaf, 0 0 1rem #a9a9a9;
 	-webkit-transition: transform 0.5s;
 	transition: transform 0.5s;
@@ -179,6 +195,57 @@ form#login>fieldset>div>div>div,form#register>fieldset>div>div>div{
 	display: flex;
     align-items: center;
 }
+form#login button, form#register button{
+	height: 35%;
+	width: 50%;
+	border-radius: 1rem;
+	border: none;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+}
+form#login button:hover, form#register button:hover{
+	transform: scale(0.95);
+}
+
+form#newWord{
+	height: 90%;
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+form#newWord>fieldset{
+	height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+	border: none;
+}
+form#newWord>fieldset>input{
+	height: 50%;
+	width: 90%;
+	padding: 1% 10%;
+	border: solid 1px;
+	background: #f1f1ff;
+}
+form#newWord>fieldset>input#wordId{
+	display: none;
+}
+form#newWord>fieldset>div{
+	height: fit-content;
+	width: 100%;
+	box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
+	background: #f1f1ff;
+	border-radius: 2rem;
+}
+form#newWord>fieldset button{
+	border: none;
+	background: transparent;
+}
+
 form#update_user {
 	height: 90%;
     width: 90%;
@@ -195,6 +262,7 @@ form#update_user>fieldset {
 	justify-content: center;
 	border: none;
 	gap: 2%;
+	cursor: pointer;
 }
 form#update_user>fieldset>legend {
 	font-size: 5rem;
@@ -202,15 +270,16 @@ form#update_user>fieldset>legend {
 }
 form#update_user>fieldset>button {
 	border: none;
-	background: #95cfb7;
+	/* background: #95cfb7; */
 	height: 10%;
 	width: 40%;
 	border-radius: 2rem;
+	cursor: pointer;
 }
 form#update_user>fieldset>div {
 	height: 80%;
 	width: 90%;
-	background: #f2f2f2;
+	/* background: #f2f2f2; */
 	display: flex;
 	flex-direction: column;
 	border-radius: 3rem;
@@ -258,6 +327,15 @@ form#delete>fieldset>div{
     flex-wrap: wrap;
 	gap: 5%;
 }
+form#delete button{
+	/* background: transparent; */
+    cursor: pointer;
+    height: 15%;
+    width: 40%;
+    border: none;
+    border-radius: 2rem;
+    box-shadow: inset 0 0 1rem 7px #9a9a9a, 0 0 1rem 3px #ffffff;
+}
 
 a#link_profile{
 	text-decoration: none;
@@ -279,12 +357,12 @@ h2#details_pts {
     font-size: 5rem;
 }
 
-span#fakebutton {
-	font-size: 1.5rem;
+div#userPanel>div>span {
+	width: fit-content;font-size: 2rem;
 	text-decoration: underline;
 	text-decoration-style: dotted;
 	box-shadow: inset 0 0 1rem #010101, 0 0 1rem #6f6f6f;
-	border-radius: 1rem;padding: 5%;
+	border-radius: 1rem;padding: 10% 30%;
 }
 
 button#signin{
@@ -292,7 +370,7 @@ button#signin{
 	width: 30%;
 	border: none;
 	border-radius: 1rem;
-	background-color: #dadada;
+	/* background-color: #dadada; */
 	font-size: 1rem;
 }
 button#signin:hover{
@@ -311,9 +389,9 @@ div#allPlayers {
 }
 div#dash{
 	height: 75%;
-	width: 10%;
-	background: cyan;
-	display: flex;
+	aspect-ratio: 5;
+	background: #a0a0a0;
+	border-radius: 1rem;
 }
 div#deletepopup {
 	position: absolute;
@@ -336,6 +414,7 @@ div#deletepopup>div{
     justify-content: space-evenly;
 	border-radius: 10rem;
 	font-size: 3rem;
+	cursor: pointer;
 }
 div#deletepopup>div>img {
     max-width: 15%;
@@ -359,10 +438,10 @@ div#details_words::-webkit-scrollbar {
 	background: rgba(90, 90, 90, 0.5);
 }
 div#dot{
-	height: 30%;
-	width: 20%;
-	background: fuchsia;
-	display: flex;
+	height: 80%;
+	aspect-ratio: 1;
+	background: #d2d2d2;
+	border-radius: 1rem;
 }
 div#game{
 	height: 95%;
@@ -371,6 +450,26 @@ div#game{
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+}
+div#init {
+	width: 50%;
+	height: 30%;
+	border-radius: 4rem;
+	font-size: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
+	-webkit-transition: transform 0.840s, -webkit-box-shadow 0.840s, box-shadow 0.840s;
+	transition: transform 0.840s, -webkit-box-shadow 0.840, box-shadow 0.840s;
+	cursor: pointer;
+	user-select: none;
+}
+div#init:hover{
+	transform: scale(1.1);
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
 }
 div#logoff {
 	height: 5%;
@@ -427,6 +526,15 @@ div#mini {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
+div#handler {
+	width: 95%;
+	height: 50%;
+	/* background: fuchsia; */
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
 div#oU{
 	height: 89.5%;
 	width: 99%;
@@ -436,15 +544,16 @@ div#oU{
 	border-radius: 0 0 2rem 2rem;
 }
 div#oUH{
-	height: 9.5%;
-	width: 99%;
+	min-height: fit-content;
+	height: 10%;
+	width: 100%;
 	background: #B2B2B2;
 	border-radius: 2rem 2rem 0 0;
 	justify-content: space-between;
 	padding: 0% 5%;
 }
 div#oUH>h1{
-	height: 60%;
+	height: fit-content;
 	width: 100%;
 	font-size: 1.5rem;
 	font-weight: 700;
@@ -452,7 +561,8 @@ div#oUH>h1{
 }
 div#play {
 	height: 30%;
-	width: 100%;background: white;
+	width: 100%;
+	/* background: white; */
 	width: 75%;
 	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
 	border-radius: 5rem;
@@ -463,12 +573,14 @@ div#play {
 div#play>div {
 	height: 90%;
 	width: 90%;
+	padding: 1%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
 	box-shadow: 0 0 1rem 4px #313131, inset 0 0 1rem #525252;
 	border-radius: 2rem;
+	gap: 5%;
 }
 div#profile{
 	height: 95%;
@@ -498,7 +610,7 @@ div#score{
 div#score>div{
 	height: 90%;
 	width: 95%;
-	background: white;
+	/* background: white; */
 	box-shadow: 0 0 1rem black;
 	border-radius: 1rem;
 }
@@ -514,7 +626,7 @@ div#scoreNames{
 	padding: 3% 0%;
 	overflow: auto;
 }
-div#scoreNames::-webkit-scrollbar {
+div#scoreNames::-webkit-scrollbar,div#mini::-webkit-scrollbar,div#users_info>div>div::-webkit-scrollbar{
 	width: 0.8rem;
 	background: rgba(90, 90, 90, 0.7);
 	border-radius: 10rem;
@@ -527,14 +639,16 @@ div#scoreNames>div{
 	justify-content: space-between;
 	flex-direction: column;
 	box-shadow: 0 0 1rem #9a9a9a, 0 0 2rem #1f1f1f;
-	color: #afafaf;
+	color: #eeeeee;
 	border-radius: 2rem;
 	transition: transform 0.840s;
 	cursor: pointer;
 }
 div#scoreNames>div:nth-child(1){
+	height: fit-content;
 	border-radius: 0.5rem;
-	background-color: #3f3f3f;
+	background-color: #afafaf;
+	font-size: 2rem;
 }
 div#scoreNames>div:nth-child(2){
 	color: gold;
@@ -558,7 +672,7 @@ div#user_detalhes {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	background: #f1f1f1;
+	/* background: #f1f1f1; */
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -610,6 +724,55 @@ div#user_detalhes>div>div {
 div#deletebtn{
 	top: 90%;
 }
+div#users_info{
+	position: absolute;
+	background: rgba(245,245,245,0.5);
+	height: 100%;
+	width: 100%;
+	z-index: 3;
+	display: none;
+	justify-content: center;
+    align-items: center;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+}
+div#users_info>div{
+	position: absolute;
+	background: rgba(245,245,245,1);
+	height: 0%;
+	width: 0%;
+	z-index: 4;
+	animation: users 1s cubic-bezier(0, -0.9, 1, 1.3) forwards;
+	display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	cursor: cursor;
+}
+div#users_info>div>div{
+	height: 80%;
+    width: 40%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+	overflow-x: clip;
+	overflow-y: auto;
+}
+img#users_img{
+	max-height: 75%;
+	max-width: 90%;
+}
+div#users_info>div>div>div{
+	height: fit-content;
+	width: 100%;
+}
+div#users_info span{
+	font-size: 2rem;
+}
 div#userPanel {
 	height: 100%;
     width: 100%;
@@ -622,11 +785,11 @@ div#userPanel {
 }
 div#userPanel>div{
 	height: 20%;
-	width: 80%;
+	width: fit-content;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	flex-direction: row;
+	flex-direction: column;
 }
 div#userPanel>img {
     max-width: 95%;
@@ -671,11 +834,11 @@ div#words::-webkit-scrollbar {
 div#words>span {
 	height: fit-content;
 	width: 20%;
-	background: white;
+	/* background: white; */
 	font-size: 1.5rem;
 	min-width: 120px;
 	text-transform: capitalize;
-	box-shadow: inset 0 0 2.5rem #5f5f5f, 0 0 0.5rem #3a3a3a;
+	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
 	border-radius: 2rem;
 }
 
@@ -738,7 +901,7 @@ div#words>span {
 footer{
 	width: 100%;
 	height: 5vh;
-	background: #95cfb7;
+	background: #54786A;
 	font-size: 2.5rem;
 	-webkit-transition: transform 0.840s;
 }
@@ -749,6 +912,3 @@ footer>a{
 footer>a:hover{
 	transform: scale(1.1);
 }
-
-
-
