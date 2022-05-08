@@ -93,7 +93,6 @@ main{
 section{
 	width: 100%;
 	height: 50%;
-	/* background-color: #f1f1f1; */
 }
 section,section#usersPanel>div,section#usersPanel>div>div,div#oldUsers,footer{
 	display: flex;
@@ -108,18 +107,31 @@ section#wb>div{
     height: 100%;
     width: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 section#wb>div>div{
 	width: 90%;
-	min-height: 10%;
+	min-height: fit-content;
 	font-weight: 700;
 }
 section#wb>div>div:nth-child(2){
-	height: 60%;
+	height: 70%;
 	max-width: 350px;
 	font-weight: 400;
+}
+section#wb>div>div>span {
+	height: fit-content;
+	width: fit-content;
+	padding: 0.1rem 1rem;
+	background: rgba(240,240,240,0.7);
+	border-radius: 2rem;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	cursor: pointer;
+}
+section#wb span:hover{
+	transform: scale(1.05)
 }
 section#panel{
 	height: 100%;
@@ -160,10 +172,11 @@ form#login,form#register{
 	align-items: center;
 	justify-content: center;
 	border-radius: 2rem;
+	background: rgba(200,200,200,0.4);
 	box-shadow: inset 0 0 0.8rem #5f5f5f, 0 0 1.5rem #e0e0e0;
 }
 form#login>fieldset,form#register>fieldset{
-	height: 90%;
+	height: 100%;
 	width: 75%;
 	display: flex;
 	flex-direction: column;
@@ -172,13 +185,17 @@ form#login>fieldset,form#register>fieldset{
 	border: none;
 }
 form#login>fieldset>div,form#register>fieldset>div{
-	height: 85%;
+	height: 80%;
 	width: 95%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	font-size: 1.5rem;
+	margin: 0.1rem 0rem;
+}
+form#login>fieldset>div:nth-child(3),form#register>fieldset>div:nth-child(3){
+	height: 30%;
 }
 form#login>fieldset>div>div,form#register>fieldset>div>div{
 	height: 20%;
@@ -195,9 +212,9 @@ form#login>fieldset>div>div>div,form#register>fieldset>div>div>div{
     align-items: center;
 }
 form#login button, form#register button{
-	height: 35%;
+	height: 70%;
 	width: 50%;
-	border-radius: 1rem;
+	border-radius: 2rem;
 	border: none;
 	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
 	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
@@ -273,7 +290,6 @@ form#update_user>fieldset>legend {
 }
 form#update_user>fieldset>button {
 	border: none;
-	/* background: #95cfb7; */
 	height: 10%;
 	width: 40%;
 	border-radius: 2rem;
@@ -282,7 +298,6 @@ form#update_user>fieldset>button {
 form#update_user>fieldset>div {
 	height: 80%;
 	width: 90%;
-	/* background: #f2f2f2; */
 	display: flex;
 	flex-direction: column;
 	border-radius: 3rem;
@@ -331,7 +346,6 @@ form#delete>fieldset>div{
 	gap: 5%;
 }
 form#delete button{
-	/* background: transparent; */
     cursor: pointer;
     height: 15%;
     width: 40%;
@@ -393,7 +407,8 @@ div#allPlayers {
 	height: 30%;
 	width: 100%;
 	display: flex;
-	background: rgba(200,200,200,0.4);flex-direction: column;
+	background: rgba(200,200,200,0.4);
+	flex-direction: column;
 	box-shadow: inset 0 0 1rem #b3b3b3, 0 0 1rem #525252;
 	border-radius: 2rem;
 	align-items: center;
@@ -482,7 +497,8 @@ div#init:hover{
 }
 div#logoff {
 	height: 5%;
-	display: flex;width: 50%;
+	display: flex;
+	width: 50%;
 	margin: 2%;
 	box-shadow: 0 0 1rem 1rem #5f5f5f, inset 0 0 2rem 0.5rem #979797;
 	align-items: center;
@@ -512,7 +528,8 @@ div#lr>div{
 	-webkit-transition: transform 0.840s, -webkit-box-shadow 0.840s, box-shadow 0.840s;
 	transition: transform 0.840s, -webkit-box-shadow 0.840, box-shadow 0.840s;
 	cursor: pointer;
-	background: rgba(200,200,200,0.6);user-select: none;
+	background: rgba(200,200,200,0.6);
+	user-select: none;
 }
 div#lr>div:hover{
 	transform: scale(1.03);
@@ -538,11 +555,9 @@ div#mini {
 div#handler {
 	width: 95%;
 	height: 75%;
-	/* background: fuchsia; */
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	/* justify-content: space-between; */
 }
 div#oU{
 	height: 89.5%;
@@ -565,8 +580,7 @@ div#oUH>h1{
 	height: fit-content;
 	width: 100%;
 	font-size: 1.5rem;
-	font-weight: 700;
-	
+	font-weight: 700;	
 }
 div#play {
 	height: 30%;
@@ -604,7 +618,6 @@ div#profile{
 	padding: 1% 0%;
 	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
 	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
-
 }
 div#profile>a {
     height: 70%;
@@ -626,7 +639,6 @@ div#score{
 div#score>div{
 	height: 90%;
 	width: 95%;
-	/* background: white; */
 	box-shadow: 0 0 1rem black;
 	border-radius: 1rem;
 }
@@ -650,7 +662,8 @@ div#scoreNames::-webkit-scrollbar,section#usersPanel>div>div>div::-webkit-scroll
 div#scoreNames>div{
 	height: 4rem;
 	width: 90%;
-	background: rgba(200,200,200,0.5);display: flex;
+	background: rgba(200,200,200,0.5);
+	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
@@ -688,7 +701,6 @@ div#user_detalhes {
 	position: relative;
 	height: 100%;
 	width: 100%;
-	/* background: #f1f1f1; */
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -698,12 +710,14 @@ div#user_detalhes>div {
     width: 45%;
     padding: 5% 0%;
     display: flex;
-    background: rgb(200,200,200,0.2);flex-direction: column;
+    background: rgb(200,200,200,0.2);
+	flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 	text-shadow: 0 0 3rem black;
 	box-shadow: inset 0 0 1rem 0.5rem #5f5f5f, 0 0 0.5rem 0.8rem #3a3a3a;
-border-radius: 10rem 10rem 3rem 3rem;}
+	border-radius: 10rem 10rem 3rem 3rem;
+}
 div#user_detalhes>div:nth-child(3),div#backbtn,div#deletebtn{
     position: absolute;
 	height: 8%;
@@ -731,7 +745,8 @@ div#user_detalhes>div>div#left{
 div#user_detalhes>div>div {
 	height: 70%;
 	width: 85%;
-	background: rgb(200,200,200,0.3);display: flex;
+	background: rgb(200,200,200,0.3);
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
@@ -740,7 +755,8 @@ div#user_detalhes>div>div {
     overflow-x: overlay;
 	box-shadow: inset 0 0 1.2rem 0.5rem #979797;
 	-webkit-box-shadow: inset 0 0 1.2rem 0.5rem #979797;
-border-radius: 6rem;}
+	border-radius: 6rem;
+}
 div#deletebtn{
 	top: 90%;
 }
@@ -822,7 +838,8 @@ div#userPanel>div>span {
 div#userPanel>div>span#title_user {
 	box-shadow: none;
 	font-size: 5rem;
-background: transparent;}
+	background: transparent;
+}
 div#userPanel>img {
     max-width: 95%;
     max-height: 45%;
@@ -856,7 +873,8 @@ div#words {
 	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
 	border-radius: 4rem;
 	cursor: pointer;
-background: rgba(200,200,200,0.2);}
+	background: rgba(200,200,200,0.2);
+}
 div#words>span:hover {
 	font-size: 3rem;
 }
@@ -932,7 +950,6 @@ button#signin{
 	width: 30%;
 	border: none;
 	border-radius: 1rem;
-	/* background-color: #dadada; */
 	font-size: 1rem;
 }
 button#signin:hover{
@@ -964,6 +981,10 @@ input#wordSlain {
 	cursor: pointer;
 }
 
+h1#details_id {
+	font-size: 1.5rem;
+}
+
 h2#details_pts {
 	height: fit-content;
     width: 80%;
@@ -987,6 +1008,4 @@ footer>a:hover{
 	transform: scale(1.1);
 }
 
-h1#details_id {
-	font-size: 1.5rem;
-}
+
