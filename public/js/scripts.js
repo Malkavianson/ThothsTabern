@@ -1,5 +1,27 @@
 let user = JSON.parse(localStorage.getItem('user'));
 
+function delword(word){
+	// const m = {
+		// username: user.username,
+		// slain:  word,
+	// };
+	// const slain = {
+		// method: 'POST',
+		// body: JSON.stringify(m),
+		// headers: {
+        // "Content-type": "application/json; charset=UTF-8"
+		// },
+	// };
+	// fetch('/delword', slain )
+	document.getElementById('wordId').value = user.username;
+	document.getElementById('wordSlain').value = word;
+	document.getElementById('delWord').style.display = 'flex';
+};
+
+function delclose(){
+	document.getElementById('delWord').style.display = 'none';
+}
+
 function showUser(a,user){
 	switch(a){
 		case 'o':
@@ -9,11 +31,12 @@ function showUser(a,user){
 			document.getElementById('users_name').innerText = 'Nome: '+auser.name;
 			document.getElementById('users_pts').innerText = 'Pontos: '+auser.pts;
 			document.getElementById('users_words').innerHTML = '<span>Palavras:</span></br>'
-			console.log(auser)
-			const words = auser.words.split(',');
-			words.forEach((w)=> {
-				document.getElementById('users_words').innerHTML += '<span>'+w.trim()+'</span></br>';
-			});
+			if(auser.words!=null){
+				const words = auser.words.split(',');
+				words.forEach((w)=> {
+					document.getElementById('users_words').innerHTML += '<span>'+w.trim()+'</span></br>';
+				});
+			}
 			document.getElementById('users_info').style.display = 'flex';
 			break;
 		case 'c':
@@ -47,7 +70,6 @@ function cProfile(a){
 };
 function error (err){
 	if (document.readyState === 'complete') {
-	console.log(err)
 		switch(err){
 			case 'erro':
 		
@@ -140,10 +162,13 @@ function game(user){
 };
 
 function updatedetails(user){
-	let words = user.words.split(',');
-	words.forEach((w)=> {
-		document.getElementById('details_words').innerHTML += '<span>'+w.trim()+'</span></br>';
-	});
+	document.getElementById('details_words').innerHTML = '<span>Palavras:</span></br>'
+	if(user.words != null){
+		let words = user.words.split(',');
+		words.forEach((w)=> {
+			document.getElementById('details_words').innerHTML += '<div onclick="delword('+"'"+w.trim()+"'"+')"><span>'+w.trim()+'</span></div></br>';
+		});
+	}
 	document.getElementById('details_img').src = user.img;
 	document.getElementById('details_id').innerText = 'ID: '+user.id;
 	document.getElementById('details_username').innerText = 'User: '+user.username;

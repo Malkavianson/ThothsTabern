@@ -1,27 +1,23 @@
 <div id='user_detalhes'>
 	<div>
 		<img id='details_img' src="" alt="profile">
-		<div>
+		<div id='left'>
 			<h1 id='details_id'>
-				id
 			</h1>
 			<h2 id='details_username'>
-				username
 			</h2>
 			<h3 id='details_name'>
-				name
 			</h3>
 		</div>
 	</div>
 	<div>
 		<h2 id='details_pts'>
-			pontuação
 		</h2>
 		<div id='details_words'>
-			<span>Suas palavras:</span>
 		</div>
 	</div>
 	<div onclick="cProfile('c')">
-		<span>Alterar usuário</span>
+		<span>CONFIGURAÇÕES</span>
 	</div>
 </div>
+<%- include("./delWordConfirm.ejs") %>

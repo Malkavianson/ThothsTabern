@@ -5,26 +5,14 @@ import w from '../database/words.js';
 const words = w.words;
 let erro = 'erro';
 
-async function l(){
-	let list = [];
-	const user = await us();
-	const l = Object.values(words[0]).map(function (user) {
-		for(let i=0;i<user.length;i++){
-			list.push(user[i]);
-		};
-	});
-	const u = Object.values(user).map(function (user){
-		const userList = user.words.split(",");
-		for (let word of userList) {
-			list.push(word.trim())
-		}
-	});
-	return list.sort();
-};
-async function us() {
-	const u = await connection.query('select * from users', {	model: user })
-	const n = u.map((users) => users.dataValues)
-	return n;
+function c(u){
+	const user = {
+		id: u.id,
+		user: u.username,
+		name: u.name,
+		img: u.img,
+	};
+	return user;
 };
 
 function d(users){
@@ -41,15 +29,7 @@ function d(users){
 	});
 	return ul;
 };
-function c(u){
-	const user = {
-		id: u.id,
-		user: u.username,
-		name: u.name,
-		img: u.img,
-	};
-	return user;
-};
+
 function s(u){
 	
 	let score = [];
@@ -71,6 +51,7 @@ function s(u){
 	
 	return score;
 };
+
 function Register(r){
 	Object.defineProperties(this, {
 		username: {
@@ -111,6 +92,7 @@ function Register(r){
 		}
 	});	
 }
+
 function Update(u,user){
 	Object.defineProperties(this, {
 		username: {
@@ -152,11 +134,42 @@ function Update(u,user){
 	});	
 };
 
+
+async function l(){
+	let list = [];
+	const user = await us();
+	const l = Object.values(words[0]).map(function (user) {
+		for(let i=0;i<user.length;i++){
+			list.push(user[i]);
+		};
+	});
+	const u = Object.values(user).map(function (user){
+		if(user.words!=null){
+			const userList = user.words.split(",");
+			for (let word of userList) {
+				list.push(word.trim());
+			};
+		};
+	});
+	list = list.filter(i => {
+		return i;
+	});
+	return list.sort();
+};
+
+async function us() {
+	const u = await connection.query('select * from users', {	model: user })
+	const n = u.map((users) => users.dataValues)
+	return n;
+};
+
+
 export const getIndex = async (req,res) => {
 	const users = await us();
 	const data = d(users);
 	res.render('index', { erro, data });
 };
+
 export const getGame = async (req,res) => {
 	const users = await us();
 	const list = await l();
@@ -165,32 +178,39 @@ export const getGame = async (req,res) => {
 	const everybody = JSON.stringify(data);
 	res.render('game', {list, score, data, everybody});
 };
+
 export const getProfile = async (req,res) => {
 	res.render('profile');
 };
 
+
 export const postNewword = async (req, res) => {
 	const w = req.body;
-	try{
-		if( !w.user || !w.word ){
-			console.log('erro')
-			res.redirect('/game')
-		}else{
-			let users = await us();
-			const data = d(users);
-			const userWord = data.find(user => user.user === w.user);
-			userWord.words += ','+w.word
-			userWord.pts++;
-			const userw = users.find(user => user.username === userWord.user);
-			const userUpdating = await user.update(userWord, {where: { id: userw.id }});
-			users = await us();
-			const userCookie = users.find(user => user.username === w.user);
-			const cookie = JSON.stringify(userCookie);
-			res.render('enter', { cookie });
-		};
-	}catch(err){console.log(err); res.redirect('/')};
-
+	const list = await l();
+	if(list.includes(w.word.toLowerCase().trim())){
+		res.redirect('/game');
+	}else{
+		try{
+			if( !w.user || !w.word ){
+				console.log('erro')
+				res.redirect('/game')
+			}else{
+				let users = await us();
+				const data = d(users);
+				const userWord = data.find(user => user.user === w.user);
+				userWord.words += w.word+','
+				userWord.pts++;
+				const userw = users.find(user => user.username === userWord.user);
+				const userUpdating = await user.update(userWord, {where: { id: userw.id }});
+				users = await us();
+				const userCookie = users.find(user => user.username === w.user);
+				const cookie = JSON.stringify(userCookie);
+				res.render('enter', { cookie });
+			};
+		}catch(err){console.log(err); res.redirect('/')};
+	}
 };
+
 export const postUpdateProfile = async (req,res) => {
 	const u = req.body;
 	try{
@@ -209,6 +229,7 @@ export const postUpdateProfile = async (req,res) => {
 		};
 	}catch(err){console.log(err); res.redirect('/')};
 };
+
 export const postRegister = async (req,res) => {
 	let users = await us();
 	const data = d(users);
@@ -239,6 +260,7 @@ export const postRegister = async (req,res) => {
 		};
 	}catch(err){ console.log(err)};
 };
+
 export const postLogin = async (req,res) =>{
 	const users = await us();
 	const data = d(users);
@@ -262,7 +284,8 @@ export const postLogin = async (req,res) =>{
 		res.render('index', { erro, data });
 	};
 };
-export const postDelete = async (req,res) =>{
+
+export const postDelete = async (req,res) => {
 	const d = req.body;
 	try{
 		await user.destroy({where: {id: req.body.id} });
@@ -271,4 +294,26 @@ export const postDelete = async (req,res) =>{
 		console.log(err.message)
 		res.redirect('/');
 	};
+};
+
+export const postDelword = async (req,res) => {
+	let users = await us();
+	const data = d(users);
+	const dw = req.body;
+	const userDeleting = users.find(users => users.username === dw.username);
+	let uda = userDeleting.words.split(',');
+	const udi = uda.indexOf(dw.slain);
+	uda.splice(udi,1);
+	uda = uda.filter(i => {	return i });
+	if(uda.length===0){uda='';}else{uda = uda.toString();}
+	userDeleting.words = uda
+	let userDeleted = {...userDeleting};
+	delete userDeleted.id
+	try{
+		const wordUpdating = await user.update(userDeleted, {where: { id: userDeleting.id }});
+		users = await us();
+		const userCookie = users.find(user => user.username === userDeleting.username);
+		const cookie = JSON.stringify(userCookie);
+		res.render('enter', { cookie });
+	}catch(err){console.log(err.message);res.redirect('/game')};
 };

@@ -37,7 +37,6 @@
 		transform: scale(1);
 		height: 75%;
 		width: 90%;
-
 	}
 }
 
@@ -81,16 +80,20 @@ header>div>div{
 
 main{
 	position: relative;
+	background-image: url(../img/bg.png);
 	width: 100%;
 	height: 80vh;
 	display: flex;
 	flex-direction: column;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 section{
 	width: 100%;
 	height: 50%;
-	background-color: #f1f1f1;
+	/* background-color: #f1f1f1; */
 }
 section,section#usersPanel>div,section#usersPanel>div>div,div#oldUsers,footer{
 	display: flex;
@@ -122,7 +125,8 @@ section#panel{
 	height: 100%;
 	width: 100%;
 	gap: 1%;
-	padding: 3%;
+	padding: 1%;
+	background: transparent;
 }
 section#usersPanel>div,section#usersPanel>div>div{
 	width: 95%;
@@ -132,7 +136,7 @@ section#usersPanel>div>div{
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: 2rem;
-	background: #e5e5e5;
+	background: rgba(200,200,200,0.5);
 	justify-content: space-between;
 	box-shadow: inset 0 0 0.8rem #afafaf, 0 0 1rem #a9a9a9;
 	-webkit-transition: transform 0.5s;
@@ -147,11 +151,6 @@ section#usersPanel>div>div>div{
 	align-items: center;
     overflow-y: auto;
     overflow-x: hidden;
-}
-section#usersPanel>div>div>div::-webkit-scrollbar {
-	width: 1rem;
-	background: rgba(190, 190, 190, 0.1);
-	border-radius: 10rem;
 }
 
 form#login,form#register{
@@ -206,9 +205,8 @@ form#login button, form#register button{
 form#login button:hover, form#register button:hover{
 	transform: scale(0.95);
 }
-
 form#newWord{
-	height: 90%;
+	height: 100%;
     width: 90%;
     display: flex;
     align-items: center;
@@ -217,16 +215,17 @@ form#newWord>fieldset{
 	height: 100%;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    padding: 1%;flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 2rem;
 	border: none;
 }
 form#newWord>fieldset>input{
-	height: 50%;
-	width: 90%;
+	height: 3rem;
+	width: 75%;
 	padding: 1% 10%;
+	margin: 1% 0%;
 	border: solid 1px;
 	background: #f1f1ff;
 }
@@ -235,17 +234,21 @@ form#newWord>fieldset>input#wordId{
 }
 form#newWord>fieldset>div{
 	height: fit-content;
-	width: 100%;
+	width: 25vw;
+	padding: 0.1rem 1rem;
 	box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
 	-webkit-box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
 	background: #f1f1ff;
 	border-radius: 2rem;
 }
+form#newWord>fieldset>div:hover {
+	transform: scale(1.05);
+}
 form#newWord>fieldset button{
 	border: none;
 	background: transparent;
+	cursor: pointer;
 }
-
 form#update_user {
 	height: 90%;
     width: 90%;
@@ -336,52 +339,61 @@ form#delete button{
     border-radius: 2rem;
     box-shadow: inset 0 0 1rem 7px #9a9a9a, 0 0 1rem 3px #ffffff;
 }
-
-a#link_profile{
-	text-decoration: none;
-	color: black
+form#delWord {
+	position: absolute;
+	right: 5%;
+	bottom: 15%;
+	background: #f1f1f1;
+	height: 20%;
+	width: 15%;
+	display: none;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	padding: 1%;
+	border-radius: 4rem;
+	cursor: pointer;
 }
-
-img#details_img {
-	max-width: 85%;
-	max-height: 50%;
+form#delWord input#wordId {
+	display: none;
+	cursor: pointer;
+}
+form#delWord>div {
+	background: #f1f1f1;
+	font-size: 2rem;
+	height: fit-content;
 	aspect-ratio: 1;
 	border-radius: 5rem;
-	border: ridge 0.4rem #0f0a1a;
+	cursor: pointer;
 }
-
-h2#details_pts {
-	height: fit-content;
-    width: 80%;
-    text-align: center;
-    font-size: 5rem;
-}
-
-div#userPanel>div>span {
-	width: fit-content;font-size: 2rem;
-	text-decoration: underline;
-	text-decoration-style: dotted;
-	box-shadow: inset 0 0 1rem #010101, 0 0 1rem #6f6f6f;
-	border-radius: 1rem;padding: 10% 30%;
-}
-
-button#signin{
-	height: 30%;
-	width: 30%;
+form#delWord>fieldset {
 	border: none;
-	border-radius: 1rem;
-	/* background-color: #dadada; */
-	font-size: 1rem;
+	height: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1%;
+	padding: 1%;
+	cursor: pointer;
 }
-button#signin:hover{
-	transform: scale(0.95);
+form#delWord>fieldset>div {
+	margin: 2%;
+	cursor: pointer;
+}
+form#delWord>fieldset button {
+	background: transparent;
+	border-radius: 2rem;
+	height: fit-content;
+	width: fit-content;
+	padding: 5%;
+	cursor: pointer;
 }
 
 div#allPlayers {
 	height: 30%;
 	width: 100%;
 	display: flex;
-	flex-direction: column;
+	background: rgba(200,200,200,0.4);flex-direction: column;
 	box-shadow: inset 0 0 1rem #b3b3b3, 0 0 1rem #525252;
 	border-radius: 2rem;
 	align-items: center;
@@ -427,15 +439,12 @@ div#desistir {
 	width: 40%;
 	box-shadow: inset 0 0 2rem 3rem #f1f1f1, 0 0 1rem 1rem #525252;
 }
-div#details_words>span {
-	font-size: 5rem;
+div#details_words span {
+	font-size: 4rem;
 	height: fit-content;
 	text-shadow: 0 0 2.5rem black;
 	text-decoration: underline;
-}
-div#details_words::-webkit-scrollbar {
-	width: 0.5rem;
-	background: rgba(90, 90, 90, 0.5);
+	cursor: pointer;
 }
 div#dot{
 	height: 80%;
@@ -452,8 +461,8 @@ div#game{
 	justify-content: space-evenly;
 }
 div#init {
-	width: 50%;
-	height: 30%;
+	width: 30vw;
+	height: fit-content;
 	border-radius: 4rem;
 	font-size: 2rem;
 	display: flex;
@@ -503,7 +512,7 @@ div#lr>div{
 	-webkit-transition: transform 0.840s, -webkit-box-shadow 0.840s, box-shadow 0.840s;
 	transition: transform 0.840s, -webkit-box-shadow 0.840, box-shadow 0.840s;
 	cursor: pointer;
-	user-select: none;
+	background: rgba(200,200,200,0.6);user-select: none;
 }
 div#lr>div:hover{
 	transform: scale(1.03);
@@ -528,19 +537,19 @@ div#mini {
 }
 div#handler {
 	width: 95%;
-	height: 50%;
+	height: 75%;
 	/* background: fuchsia; */
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	justify-content: space-evenly;
+	/* justify-content: space-between; */
 }
 div#oU{
 	height: 89.5%;
 	width: 99%;
 	justify-content: space-around;
 	flex-wrap: wrap;
-	background: #f6f6f6;
+	background: rgba(200,200,200,0.5);
 	border-radius: 0 0 2rem 2rem;
 }
 div#oUH{
@@ -562,7 +571,7 @@ div#oUH>h1{
 div#play {
 	height: 30%;
 	width: 100%;
-	/* background: white; */
+	background: rgba(230,230,230,0.5);
 	width: 75%;
 	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
 	border-radius: 5rem;
@@ -583,17 +592,22 @@ div#play>div {
 	gap: 5%;
 }
 div#profile{
-	height: 95%;
-	width: 25%;
+	height: 100%;
+	width: 30%;
 	min-width: 125px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-evenly;
+	background: rgba(220,220,220,0.5);
+	border-radius: 5rem;
 	padding: 1% 0%;
+	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
+
 }
 div#profile>a {
-    height: 45%;
+    height: 70%;
     width: 95%;
 }
 div#registerBox,div#loginBox{
@@ -606,6 +620,8 @@ div#score{
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-around;
+	overflow-x: clip;
+    overflow-y: auto;
 }
 div#score>div{
 	height: 90%;
@@ -626,15 +642,15 @@ div#scoreNames{
 	padding: 3% 0%;
 	overflow: auto;
 }
-div#scoreNames::-webkit-scrollbar,div#mini::-webkit-scrollbar,div#users_info>div>div::-webkit-scrollbar{
-	width: 0.8rem;
-	background: rgba(90, 90, 90, 0.7);
+div#scoreNames::-webkit-scrollbar,section#usersPanel>div>div>div::-webkit-scrollbar,div#details_words::-webkit-scrollbar,div#mini::-webkit-scrollbar,div#users_info>div>div::-webkit-scrollbar,div#words::-webkit-scrollbar,div#user_detalhes>div>div::-webkit-scrollbar{
+	width: 0rem;
+	background: rgba(90, 90, 90, 0);
 	border-radius: 10rem;
 }
 div#scoreNames>div{
 	height: 4rem;
 	width: 90%;
-	display: flex;
+	background: rgba(200,200,200,0.5);display: flex;
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
@@ -682,21 +698,21 @@ div#user_detalhes>div {
     width: 45%;
     padding: 5% 0%;
     display: flex;
-    flex-direction: column;
+    background: rgb(200,200,200,0.2);flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
 	text-shadow: 0 0 3rem black;
-	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
-}
+	box-shadow: inset 0 0 1rem 0.5rem #5f5f5f, 0 0 0.5rem 0.8rem #3a3a3a;
+border-radius: 10rem 10rem 3rem 3rem;}
 div#user_detalhes>div:nth-child(3),div#backbtn,div#deletebtn{
     position: absolute;
 	height: 8%;
-    width: 25%;
+    width: fit-content;
 	display: flex;
 	align-items: center;
     justify-content: center;
 	background: rgba(200,200,200, 0.5);
-	padding: 1%;
+	padding: 1% 0.8rem;
     top: -10%;
     right: 5%;
     border-radius: 1.5rem;
@@ -708,19 +724,23 @@ div#user_detalhes>div:nth-child(3),div#backbtn,div#deletebtn{
 	cursor: pointer;
 	user-select: none;
 }
+div#user_detalhes>div>div#left{
+    height: 40%;
+    justify-content: space-evenly;
+}
 div#user_detalhes>div>div {
-	height: 40%;
+	height: 70%;
 	width: 85%;
-	display: flex;
+	background: rgb(200,200,200,0.3);display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
 	font-size: 3rem;
 	overflow-y: auto;
     overflow-x: overlay;
-	box-shadow: 0 0 1.2rem #979797;
-	-webkit-box-shadow: 0 0 1.2rem #979797;
-}
+	box-shadow: inset 0 0 1.2rem 0.5rem #979797;
+	-webkit-box-shadow: inset 0 0 1.2rem 0.5rem #979797;
+border-radius: 6rem;}
 div#deletebtn{
 	top: 90%;
 }
@@ -762,10 +782,6 @@ div#users_info>div>div{
 	overflow-x: clip;
 	overflow-y: auto;
 }
-img#users_img{
-	max-height: 75%;
-	max-width: 90%;
-}
 div#users_info>div>div>div{
 	height: fit-content;
 	width: 100%;
@@ -780,20 +796,36 @@ div#userPanel {
 	flex-direction: column;
 	align-items: center;
 	align-content: center;
-	justify-content: space-around;
+	justify-content: flex-start;
     font-size: 3rem;
+	gap: 10%;
 }
 div#userPanel>div{
-	height: 20%;
+	height: 30%;
 	width: fit-content;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	flex-direction: column;
+	margin: 5%;
 }
+div#userPanel>div>span {
+	width: fit-content;
+	font-size: 2rem;
+	text-decoration: underline;
+	text-decoration-style: dotted;
+	background: rgba(200,200,200, 0.8);
+	box-shadow: inset 0 0 1rem #010101, 0 0 1rem #6f6f6f;
+	border-radius: 1rem;
+	padding: 10% 30%;
+}
+div#userPanel>div>span#title_user {
+	box-shadow: none;
+	font-size: 5rem;
+background: transparent;}
 div#userPanel>img {
     max-width: 95%;
-    max-height: 75%;
+    max-height: 45%;
     aspect-ratio: 1;
     border-radius: 4rem;
 }
@@ -823,25 +855,21 @@ div#words {
 	padding: 0.5%;
 	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
 	border-radius: 4rem;
-}
+	cursor: pointer;
+background: rgba(200,200,200,0.2);}
 div#words>span:hover {
 	font-size: 3rem;
-}
-div#words::-webkit-scrollbar {
-	width: 0.1rem;
-	background: rgba(255, 255, 255, 0.2);
 }
 div#words>span {
 	height: fit-content;
 	width: 20%;
-	/* background: white; */
+	background: rgba(230,230,230,0.7);
 	font-size: 1.5rem;
 	min-width: 120px;
 	text-transform: capitalize;
 	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
 	border-radius: 2rem;
 }
-
 
 .change{
 	cursor: pointer;
@@ -888,6 +916,7 @@ div#words>span {
 	font-size: 2rem;
 	-webkit-transition: transform 0.420s;
 	transition: transform 0.420s;
+	cursor: pointer;
 }
 .user:hover,.mini_user:hover{
 	transform: scale(1.1);
@@ -897,6 +926,51 @@ div#words>span {
 	aspect-ratio: 1;
 	border-radius: 5vh;
 }
+
+button#signin{
+	height: 30%;
+	width: 30%;
+	border: none;
+	border-radius: 1rem;
+	/* background-color: #dadada; */
+	font-size: 1rem;
+}
+button#signin:hover{
+	transform: scale(0.95);
+}
+
+a#link_profile{
+	text-decoration: none;
+	color: black
+}
+
+img#details_img {
+	max-width: 85%;
+	max-height: 50%;
+	aspect-ratio: 1;
+	border-radius: 5rem;
+	border: ridge 0.4rem #0f0a1a;
+}
+img#users_img{
+	max-height: 75%;
+	max-width: 90%;
+}
+
+input#wordSlain {
+	border: none;
+	text-align: center;
+	padding: 2%;
+	background: #f1f1f1;
+	cursor: pointer;
+}
+
+h2#details_pts {
+	height: fit-content;
+    width: 80%;
+    text-align: center;
+    font-size: 5rem;
+}
+
 
 footer{
 	width: 100%;
@@ -911,4 +985,8 @@ footer>a{
 }
 footer>a:hover{
 	transform: scale(1.1);
+}
+
+h1#details_id {
+	font-size: 1.5rem;
 }
