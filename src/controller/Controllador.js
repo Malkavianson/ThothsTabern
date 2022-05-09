@@ -250,11 +250,13 @@ export const postRegister = async (req,res) => {
 	if (!r){
 			erro = 'reg';
 			res.render('index', { erro, data });
+			erro = 'erro';
 	};
 	try{
 		if( !r.user || !r.pw || !r.name ){
 			erro = 'reg';
 			res.render('index', { erro, data });
+			erro = 'erro';
 		}else{
 			try{
 				const newUser = new Register(r);
@@ -270,6 +272,7 @@ export const postRegister = async (req,res) => {
 				console.log(err)
 					erro = 'ainda';
 					res.render('index', { erro, data });
+					erro = 'erro';
 			};
 		};
 	}catch(err){ console.log(err); res.redirect('/')};
@@ -290,12 +293,14 @@ export const postLogin = async (req,res) =>{
 			console.log(erro)
 			const users = await us();
 			res.render('index', { erro, data });
+			erro = 'erro';
 		};
 	}else{
 		erro = 'login não existe'
 		console.log(erro);
 		const users = await us();
 		res.render('index', { erro, data });
+		erro = 'erro';
 	};
 };
 
