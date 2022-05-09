@@ -949,7 +949,7 @@ div#users_info>div{
     align-items: center;
 	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
 	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
-	cursor: cursor;
+	cursor: pointer;
 }
 div#users_info>div>div{
 	height: 80%;
