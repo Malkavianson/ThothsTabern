@@ -65,16 +65,25 @@ body#loading_page>a{
 header{
 	width: 100%;
 	height: 15vh;
-	background: #54786A;
+	background-image: url(../img/headerbg.jpg);
+	background-color: #c2a02e;
+	background-size: contain;
+	background-position: center;
+	background-repeat-y: no-repeat;
+	background-repeat-x: repeat;
+	cursor: pointer;
+	background-origin: border-box;
 }
 header>div{
 	height: 100%;
-	width: 95%;
+	width: 100%;
 	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 header>div>div{
 	height: 100%;
-	width: 45%;
+	width: 70%;
 	display: flex;
 }
 
@@ -88,6 +97,8 @@ main{
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	align-items: center;
+    justify-content: center;
 }
 
 section{
@@ -111,7 +122,7 @@ section#panel{
 	padding: 1%;
 	background: transparent;
 }
-section#progress {
+section#progress{
 	justify-content: space-around;
 }
 section#usersPanel>div,section#usersPanel>div>div{
@@ -287,7 +298,7 @@ form#newWord>fieldset{
 	height: 100%;
     width: 100%;
     display: flex;
-    padding: 1%;
+    
 	flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
@@ -306,21 +317,27 @@ form#newWord>fieldset>input#wordId{
 	display: none;
 }
 form#newWord>fieldset>div{
-	height: fit-content;
+	height: 2.7rem;
 	width: 25vw;
-	padding: 0.1rem 1rem;
+	margin: 0.1rem 1rem;
+	display: flex;
 	box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
 	-webkit-box-shadow: inset 0 0 1rem 1rem #7d7d7d, 0 0 2rem 1rem #a9a9a9;
 	background: #f1f1ff;
 	border-radius: 2rem;
+	align-items: center;
+	justify-content: center;
 }
 form#newWord>fieldset>div:hover{
 	transform: scale(1.05);
 }
 form#newWord>fieldset button{
+	height: 2.5rem;
+	width: 100%;
 	border: none;
 	background: transparent;
 	cursor: pointer;
+	font-size: 1.5rem;
 }
 form#update_user{
 	height: 90%;
@@ -487,7 +504,7 @@ div#dash{
 	background: #a0a0a0;
 	border-radius: 1rem;
 }
-div#clue {
+div#clue{
 	height: fit-content;
 	width: fit-content;
 	padding: 0.5rem 1rem;
@@ -618,10 +635,10 @@ div#lr>div:hover{
 	box-shadow: inset 0 0 3rem #7d7d7d, 0 0 0.7rem #a9a9a9;
 }
 div#menu{
-	height: 100%;
-	width: 20%;
-	display: flex;
-	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	
+	
 }
 div#mini{
 	height: 90%;
@@ -667,7 +684,7 @@ div#oUH>h1{
 	font-weight: 700;	
 }
 div#play{
-	height: 30%;
+	height: 35%;
 	width: 100%;
 	background: rgba(230,230,230,0.5);
 	width: 75%;
@@ -712,11 +729,14 @@ div#registerBox,div#loginBox{
 }
 div#result{
 	position: absolute;
-	height: 100%;
-	width: 100%;
+	height: 80%;
+	width: 80%;
 	z-index: 1;
 	background: rgba(200,200,200,0.5);
 	animation: alert 2s cubic-bezier(0.05, -0.95, 0, 1.5) forwards;
+	border-radius: 3rem;
+	box-shadow: inset 0 0 2rem #131313, 0 0 1.2rem #171717;
+	-webkit-box-shadow: inset 0 0 2rem #131313, 0 0 1.2rem #171717;
 }
 div#score{
 	height: 40%;
@@ -972,7 +992,8 @@ div#word{
 	align-content: space-around;
 	flex-direction: row;
 	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;
-	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;}
+	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;
+}
 div#words{
 	width: 100%;
     height: 30%;
@@ -992,7 +1013,7 @@ div#words{
 	background: rgba(200,200,200,0.2);
 }
 div#words>span:hover{
-	font-size: 3rem;
+	transform: scale(1.5);
 }
 div#words>span{
 	height: fit-content;
@@ -1003,6 +1024,8 @@ div#words>span{
 	text-transform: capitalize;
 	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
 	border-radius: 2rem;
+	-webkit-transition: transform 0.420s;
+	transition: transform 0.420s;
 }
 
 .change{
@@ -1113,6 +1136,38 @@ a#link_profile{
 	color: black;
 }
 
+nav#navbar {
+	height: 75%;
+	width: 100%;
+}
+
+ul#nav {
+	height: 100%;
+	width: 100%;
+	background: rgba(200,200,200,0.55);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	border-radius: 5rem;
+	font-weight: 700;
+	box-shadow: 0 0 1rem 1rem #f1f1f1, inset 0 0 1rem 0.5rem #c2a02e;
+}
+ul#nav>li {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	font-size: 3rem;
+	text-shadow: -0.2rem 0.1rem 0rem #c2a02e;
+}
+ul#nav>li>img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
 img#details_img{
 	max-width: 85%;
 	max-height: 50%;
@@ -1147,7 +1202,7 @@ h2#details_pts{
 footer{
 	width: 100%;
 	height: 5vh;
-	background: #54786A;
+	background: #c2a02e;
 	font-size: 2.5rem;
 	-webkit-transition: transform 0.840s;
 }
@@ -1158,7 +1213,4 @@ footer>a{
 footer>a:hover{
 	transform: scale(1.1);
 }
-
-
-
 

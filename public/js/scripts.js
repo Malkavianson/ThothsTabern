@@ -174,6 +174,13 @@ function redirect(n){
 	};
 };
 
+function redirectGame(){
+	console.log(user)
+	if(user==null){
+		window.location.href = "/";
+	};
+};
+
 function seek(c){
 	if(matches.includes(c)||wrongs.includes(c)){
 		console.log('já foi utilizado');
