@@ -12,7 +12,18 @@
 	<body>
 		<%- include("./partials/header.ejs") %>
 		<main>
-		<div id='result'>sobreposição do final</div>
+			<div id="result">
+				<div id="finalresult">
+					<span>FIM DE JOGO</span>
+				</div>
+				<div id="action">
+					<span> Jogar novamente?</span>
+					<div>
+						<div onclick='window.location.href = "/koutia"'>SIM</div>
+						<div onclick='window.location.href = "/game"'>NÃO</div>
+					</div>		
+				</div>
+			</div>
 			<section id='dare'>
 					<!-- <div id='clue'><span><%= clue %></span></div> -->
 					<div id='word'>

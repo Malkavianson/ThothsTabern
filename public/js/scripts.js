@@ -254,6 +254,11 @@ function verific(){
 				document.querySelectorAll('.letters')[l].style.display='flex';
 			};
 		};
+		setTimeout(() => {
+			document.getElementById('result').style.display = 'flex';
+		}, 3000);
+
+		
 		console.log('fim de jogo - perdeu');
 	}else if(matches.length===secret.length){
 		document.querySelector('#submit').disabled = true;
@@ -262,7 +267,11 @@ function verific(){
 		let att = user;
 		user.pts+=7
 		user = JSON.stringify(user);
-		localStorage.setItem('user', current );
+		localStorage.setItem('user', user );
+		setTimeout(() => {
+			document.getElementById('result').style.display = 'flex';
+		}, 1000);
+
 		console.log('fim de jogo - ganhou');
 	};
 };

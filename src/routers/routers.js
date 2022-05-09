@@ -4,7 +4,7 @@ export const routers = express.Router();
 
 routers.get('/', getIndex);
 routers.get('/game', getGame);
-routers.get('/game/koutia', getKoutia);
+routers.get('/koutia', getKoutia);
 routers.get('/profile', getProfile);
 
 routers.post('/updateprofile', postUpdateProfile)
