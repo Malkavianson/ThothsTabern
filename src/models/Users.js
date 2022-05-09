@@ -40,7 +40,7 @@ export const user = connection.define('users',{
 });
 
 const initTable = async () => {
-    await users.sync();
+    await user.sync();
 }
 
 initTable();
