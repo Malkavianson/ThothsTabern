@@ -4,6 +4,7 @@ import w from '../database/words.js';
 
 const words = w.words;
 let erro = 'erro';
+let novo = false;
 
 function c(u){
 	const user = {
@@ -166,14 +167,14 @@ async function us() {
 
 export const getIndex = async (req,res) => {
 	const users = await us();
-	const data = d(users);
+	const data = d(users).reverse();
 	res.render('index', { erro, data });
 };
 
 export const getGame = async (req,res) => {
 	const users = await us();
 	const list = await l();
-	const data = d(users);
+	const data = d(users).reverse();
 	const score = s(users);
 	const everybody = JSON.stringify(data);
 	res.render('game', {list, score, data, everybody});
@@ -183,9 +184,20 @@ export const getProfile = async (req,res) => {
 	res.render('profile');
 };
 
+export const getKoutia = async (req,res) =>{
+	
+	const list = await l();
+
+	const i = Math.floor(Math.random() * list.length);
+
+	const clue = 'desvende a Palavra'
+	const word = list[i];
+	res.render('koutia', { word, clue });
+}
+
 
 export const postNewword = async (req, res) => {
-	const w = req.body;
+	let w = req.body;
 	const list = await l();
 	if(list.includes(w.word.toLowerCase().trim())){
 		res.redirect('/game');
@@ -198,14 +210,15 @@ export const postNewword = async (req, res) => {
 				let users = await us();
 				const data = d(users);
 				const userWord = data.find(user => user.user === w.user);
-				userWord.words += w.word+','
+				const wClean = w.word.normalize('NFD').replace(/([\u0300-\u036f]|[^a-zA-Z\s-])/g, '').toLowerCase().trim();
+				userWord.words += wClean+','
 				userWord.pts++;
 				const userw = users.find(user => user.username === userWord.user);
 				const userUpdating = await user.update(userWord, {where: { id: userw.id }});
 				users = await us();
 				const userCookie = users.find(user => user.username === w.user);
 				const cookie = JSON.stringify(userCookie);
-				res.render('enter', { cookie });
+				res.render('enter', { cookie, novo });
 			};
 		}catch(err){console.log(err); res.redirect('/')};
 	}
@@ -225,7 +238,7 @@ export const postUpdateProfile = async (req,res) => {
 			users = await us();
 			const userCookie = users.find(user => user.username === u.user);
 			const cookie = JSON.stringify(userCookie);
-			res.render('enter', { cookie });
+			res.render('enter', { cookie, novo });
 		};
 	}catch(err){console.log(err); res.redirect('/')};
 };
@@ -248,9 +261,10 @@ export const postRegister = async (req,res) => {
 				await user.create(newUser);
 				users = await us();
 				const newCurrent = users.find(users => users.username === newUser.username);
-				console.log()
 				const cookie = JSON.stringify(newCurrent);
-				res.render('enter', { cookie });
+				novo = true;
+				res.render('enter', { cookie, novo });
+				novo = false;
 			}catch(err){
 				console.log('não criou')
 				console.log(err)
@@ -258,7 +272,7 @@ export const postRegister = async (req,res) => {
 					res.render('index', { erro, data });
 			};
 		};
-	}catch(err){ console.log(err)};
+	}catch(err){ console.log(err); res.redirect('/')};
 };
 
 export const postLogin = async (req,res) =>{
@@ -270,7 +284,7 @@ export const postLogin = async (req,res) =>{
 	if(verifyLogin!=undefined){
 		if(verifyLogin.pw === user.pw){
 			const cookie = JSON.stringify(verifyLogin);
-			res.render('enter', { cookie });
+			res.render('enter', { cookie, novo });
 		}else{
 			erro = 'senha incorreta';
 			console.log(erro)
@@ -314,6 +328,18 @@ export const postDelword = async (req,res) => {
 		users = await us();
 		const userCookie = users.find(user => user.username === userDeleting.username);
 		const cookie = JSON.stringify(userCookie);
-		res.render('enter', { cookie });
+		res.render('enter', { cookie, novo });
 	}catch(err){console.log(err.message);res.redirect('/game')};
+};
+
+export const postAddpts = async (req,res) =>{
+	let users = await us();
+	let winner = req.body;
+	const userWinner = users.find(user => user.username === winner.username);
+	const i = userWinner.id;
+	userWinner.pts += 7;
+	delete userWinner.id;
+	try{
+		const userUpdating = await user.update(userWinner, {where: { id: i }});
+	}catch(err){console.log(err.message)}
 };

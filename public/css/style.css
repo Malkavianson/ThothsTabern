@@ -19,16 +19,16 @@
 	}
 }
 
-@keyframes alert {
-	from {
-		transform: scale(0.8)
+@keyframes alert{
+	from{
+		transform: scale(0.6);
 	}
-	to {
-		transform: scale(1.2)
+	to{
+		transform: scale(1);
 	}
 }
 @keyframes users{
-	from {
+	from{
 		transform: scale(0);
 		height: 1%;
 		width: 1%;
@@ -100,38 +100,9 @@ section,section#usersPanel>div,section#usersPanel>div>div,div#oldUsers,footer{
 	justify-content: center;
 	align-items: center;
 }
-section#wb{
-	font-size: 2.5rem;
-}
-section#wb>div{
-    height: 100%;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-section#wb>div>div{
-	width: 90%;
-	min-height: fit-content;
-	font-weight: 700;
-}
-section#wb>div>div:nth-child(2){
-	height: 70%;
-	max-width: 350px;
-	font-weight: 400;
-}
-section#wb>div>div>span {
-	height: fit-content;
-	width: fit-content;
-	padding: 0.1rem 1rem;
-	background: rgba(240,240,240,0.7);
-	border-radius: 2rem;
-	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
-	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
-	cursor: pointer;
-}
-section#wb span:hover{
-	transform: scale(1.05)
+section#dare{
+	flex-direction: column;
+	justify-content: space-around;
 }
 section#panel{
 	height: 100%;
@@ -139,6 +110,9 @@ section#panel{
 	gap: 1%;
 	padding: 1%;
 	background: transparent;
+}
+section#progress {
+	justify-content: space-around;
 }
 section#usersPanel>div,section#usersPanel>div>div{
 	width: 95%;
@@ -164,7 +138,88 @@ section#usersPanel>div>div>div{
     overflow-y: auto;
     overflow-x: hidden;
 }
+section#wb{
+	font-size: 2.5rem;
+}
+section#wb>div{
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+section#wb>div>div{
+	width: 90%;
+	min-height: fit-content;
+	font-weight: 700;
+}
+section#wb>div>div:nth-child(2){
+	height: 70%;
+	max-width: 350px;
+	font-weight: 400;
+}
+section#wb>div>div>span{
+	height: fit-content;
+	width: fit-content;
+	padding: 0.1rem 1rem;
+	background: rgba(240,240,240,0.7);
+	border-radius: 2rem;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	cursor: pointer;
+}
+section#wb span:hover{
+	transform: scale(1.05);
+}
 
+form#input,div#status{
+	background: rgba(200,200,200,0.5);
+	height: 50%;
+	width: 30%;
+	min-width: 15rem;
+	border-radius: 3rem;
+	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+}
+form#input>fieldset{
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
+	flex-wrap: nowrap;
+	border: none;
+}
+form#input>fieldset>input{
+	width: 8rem;
+	aspect-ratio: 1;
+	font-size: 5rem;
+	font-weight: bolder;
+	font-variant: small-caps;
+	text-shadow: 0 0 2rem black;
+	font-family: 'Cormorant Garamond', serif;
+	text-align: center;
+	border-radius: 3rem;
+	background: rgba(220,220,219,0.7);
+	padding: 1%;
+	margin: 0.2rem;
+	box-shadow: 0 0 1rem 0.5rem #797979;
+	-webkit-box-shadow: 0 0 1rem 0.5rem #797979;
+}
+form#input>fieldset>button{
+	width: 4rem;
+	color: white;
+	aspect-ratio: 1;
+	border-radius: 3rem;
+	border: none;
+	box-shadow: inset 0 0 2rem 0.3rem #adadad, 0 0 1rem 0.6rem #797979;
+	-webkit-box-shadow: inset 0 0 2rem 0.3rem #adadad, 0 0 1rem 0.6rem #797979;
+}
 form#login,form#register{
 	height: 100%;
 	width: 100%;
@@ -232,7 +287,8 @@ form#newWord>fieldset{
 	height: 100%;
     width: 100%;
     display: flex;
-    padding: 1%;flex-direction: column;
+    padding: 1%;
+	flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     font-size: 2rem;
@@ -258,7 +314,7 @@ form#newWord>fieldset>div{
 	background: #f1f1ff;
 	border-radius: 2rem;
 }
-form#newWord>fieldset>div:hover {
+form#newWord>fieldset>div:hover{
 	transform: scale(1.05);
 }
 form#newWord>fieldset button{
@@ -266,14 +322,14 @@ form#newWord>fieldset button{
 	background: transparent;
 	cursor: pointer;
 }
-form#update_user {
+form#update_user{
 	height: 90%;
     width: 90%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-form#update_user>fieldset {
+form#update_user>fieldset{
 	height: 100%;
 	width: 90%;
 	display: flex;
@@ -284,18 +340,18 @@ form#update_user>fieldset {
 	gap: 2%;
 	cursor: pointer;
 }
-form#update_user>fieldset>legend {
+form#update_user>fieldset>legend{
 	font-size: 5rem;
 	font-weight: 700;
 }
-form#update_user>fieldset>button {
+form#update_user>fieldset>button{
 	border: none;
 	height: 10%;
 	width: 40%;
 	border-radius: 2rem;
 	cursor: pointer;
 }
-form#update_user>fieldset>div {
+form#update_user>fieldset>div{
 	height: 80%;
 	width: 90%;
 	display: flex;
@@ -304,7 +360,7 @@ form#update_user>fieldset>div {
 	align-items: center;
 	justify-content: space-evenly;
 }
-form#update_user>fieldset>div>label {
+form#update_user>fieldset>div>label{
 	height: 10%;
 	width: 50%;
 	font-size: 3rem;
@@ -353,26 +409,26 @@ form#delete button{
     border-radius: 2rem;
     box-shadow: inset 0 0 1rem 7px #9a9a9a, 0 0 1rem 3px #ffffff;
 }
-form#delWord {
+form#delWord{
 	position: absolute;
 	right: 5%;
 	bottom: 15%;
 	background: #f1f1f1;
-	height: 20%;
-	width: 15%;
+	height: fit-content;
+	width: fit-content;
 	display: none;
 	flex-direction: column;
 	align-items: flex-end;
 	justify-content: center;
-	padding: 1%;
+	padding: 1rem 2rem;
 	border-radius: 4rem;
 	cursor: pointer;
 }
-form#delWord input#wordId {
+form#delWord input#wordId{
 	display: none;
 	cursor: pointer;
 }
-form#delWord>div {
+form#delWord>div{
 	background: #f1f1f1;
 	font-size: 2rem;
 	height: fit-content;
@@ -380,7 +436,7 @@ form#delWord>div {
 	border-radius: 5rem;
 	cursor: pointer;
 }
-form#delWord>fieldset {
+form#delWord>fieldset{
 	border: none;
 	height: 90%;
 	display: flex;
@@ -389,12 +445,13 @@ form#delWord>fieldset {
 	gap: 1%;
 	padding: 1%;
 	cursor: pointer;
+	font-size:2rem;
 }
-form#delWord>fieldset>div {
+form#delWord>fieldset>div{
 	margin: 2%;
 	cursor: pointer;
 }
-form#delWord>fieldset button {
+form#delWord>fieldset button{
 	background: transparent;
 	border-radius: 2rem;
 	height: fit-content;
@@ -403,7 +460,7 @@ form#delWord>fieldset button {
 	cursor: pointer;
 }
 
-div#allPlayers {
+div#allPlayers{
 	height: 30%;
 	width: 100%;
 	display: flex;
@@ -414,13 +471,32 @@ div#allPlayers {
 	align-items: center;
 	justify-content: space-between;
 }
+div#clue>span {
+	font-size: 4rem;
+	font-style: oblique;
+	font-variant: petite-caps;
+	font-weight: 700;
+	text-decoration: underline;
+	text-transform: capitalize;
+	padding: 0.5rem;
+	cursor:default;
+}
 div#dash{
 	height: 75%;
 	aspect-ratio: 5;
 	background: #a0a0a0;
 	border-radius: 1rem;
 }
-div#deletepopup {
+div#clue {
+	height: fit-content;
+	width: fit-content;
+	padding: 0.5rem 1rem;
+	background: rgba(200,200,200,0.4);
+	border-radius: 3rem 3rem 1rem 1rem;
+	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;
+	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;
+}
+div#deletepopup{
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -443,19 +519,18 @@ div#deletepopup>div{
 	font-size: 3rem;
 	cursor: pointer;
 }
-div#deletepopup>div>img {
+div#deletepopup>div>img{
     max-width: 15%;
 	max-height: 15%;
     aspect-ratio: 1;
 	animation: alert 1s cubic-bezier(0.67, 0.25, 0, 1.13) infinite alternate;
 }
-div#desistir {
+div#desistir{
 	height: fit-content;
 	width: 40%;
 	box-shadow: inset 0 0 2rem 3rem #f1f1f1, 0 0 1rem 1rem #525252;
 }
-div#details_words span {
-	font-size: 4rem;
+div#details_words span{
 	height: fit-content;
 	text-shadow: 0 0 2.5rem black;
 	text-decoration: underline;
@@ -475,7 +550,14 @@ div#game{
 	align-items: center;
 	justify-content: space-evenly;
 }
-div#init {
+div#handler{
+	width: 95%;
+	height: 75%;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+div#init{
 	width: 30vw;
 	height: fit-content;
 	border-radius: 4rem;
@@ -495,7 +577,7 @@ div#init:hover{
 	box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
 	-webkit-box-shadow: inset 0 0 1rem 1rem #adadad, 0 0 1rem 0.5rem #797979;
 }
-div#logoff {
+div#logoff{
 	height: 5%;
 	display: flex;
 	width: 50%;
@@ -541,7 +623,7 @@ div#menu{
 	display: flex;
 	flex-direction: row;
 }
-div#mini {
+div#mini{
 	height: 90%;
     width: 95%;
     padding: 3% 1%;
@@ -552,12 +634,14 @@ div#mini {
 	overflow-x: hidden;
 	overflow-y: auto;
 }
-div#handler {
-	width: 95%;
-	height: 75%;
+div#miss{
+	margin: 0.5rem;
+	padding: 0.2rem 1.5rem;
 	display: flex;
+	flex-direction: row;
 	align-items: center;
-	flex-direction: column;
+	justify-content: space-around;
+	gap: 0.3rem;
 }
 div#oU{
 	height: 89.5%;
@@ -582,7 +666,7 @@ div#oUH>h1{
 	font-size: 1.5rem;
 	font-weight: 700;	
 }
-div#play {
+div#play{
 	height: 30%;
 	width: 100%;
 	background: rgba(230,230,230,0.5);
@@ -593,7 +677,7 @@ div#play {
 	align-items: center;
 	justify-content: center;
 }
-div#play>div {
+div#play>div{
 	height: 90%;
 	width: 90%;
 	padding: 1%;
@@ -619,12 +703,20 @@ div#profile{
 	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
 	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
 }
-div#profile>a {
+div#profile>a{
     height: 70%;
     width: 95%;
 }
 div#registerBox,div#loginBox{
 	display: none;
+}
+div#result{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	background: rgba(200,200,200,0.5);
+	animation: alert 2s cubic-bezier(0.05, -0.95, 0, 1.5) forwards;
 }
 div#score{
 	height: 40%;
@@ -688,7 +780,7 @@ div#scoreNames>div:nth-child(3){
 div#scoreNames>div:nth-child(4){
 	color: burlywood;
 }
-div#scoreNames>div:hover {
+div#scoreNames>div:hover{
 	height: fit-content;
 	width: 95%;
 	font-size: 2.3rem;
@@ -697,7 +789,14 @@ div#scoreNames>div:hover {
 	z-index: 1;
 	padding: 2%;
 }
-div#user_detalhes {
+div#status>div {
+	height: fit-content;
+	width: 80%;
+	font-size: 2.5rem;
+	font-weight: 700;
+	text-shadow: -2px 2px 0.3rem #f1f1f1;
+}
+div#user_detalhes{
 	position: relative;
 	height: 100%;
 	width: 100%;
@@ -705,7 +804,7 @@ div#user_detalhes {
 	align-items: center;
 	justify-content: space-around;
 }
-div#user_detalhes>div {
+div#user_detalhes>div{
     height: 80%;
     width: 45%;
     padding: 5% 0%;
@@ -742,7 +841,7 @@ div#user_detalhes>div>div#left{
     height: 40%;
     justify-content: space-evenly;
 }
-div#user_detalhes>div>div {
+div#user_detalhes>div>div{
 	height: 70%;
 	width: 85%;
 	background: rgb(200,200,200,0.3);
@@ -805,7 +904,7 @@ div#users_info>div>div>div{
 div#users_info span{
 	font-size: 2rem;
 }
-div#userPanel {
+div#userPanel{
 	height: 100%;
     width: 100%;
 	display: flex;
@@ -825,7 +924,7 @@ div#userPanel>div{
 	flex-direction: column;
 	margin: 5%;
 }
-div#userPanel>div>span {
+div#userPanel>div>span{
 	width: fit-content;
 	font-size: 2rem;
 	text-decoration: underline;
@@ -835,18 +934,18 @@ div#userPanel>div>span {
 	border-radius: 1rem;
 	padding: 10% 30%;
 }
-div#userPanel>div>span#title_user {
+div#userPanel>div>span#title_user{
 	box-shadow: none;
 	font-size: 5rem;
 	background: transparent;
 }
-div#userPanel>img {
+div#userPanel>img{
     max-width: 95%;
     max-height: 45%;
     aspect-ratio: 1;
     border-radius: 4rem;
 }
-div#user_update {
+div#user_update{
 	position: relative;
 	height: 100%;
 	width: 100%;
@@ -857,7 +956,24 @@ div#user_update {
 div#wbBox{
 	display: flex;
 }
-div#words {
+div#word{
+	font-size: 4rem;
+	display: flex;
+	gap: 2%;
+	height: fit-content;
+	min-height: 20rem;
+	width: 95%;
+	background: rgba(200,200,200,0.5);
+	border-radius: 4rem;
+	padding: 1rem 1.5rem;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: space-around;
+	flex-direction: row;
+	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;
+	-webkit-box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 1rem #797979;}
+div#words{
 	width: 100%;
     height: 30%;
 	min-width: 123px;
@@ -868,22 +984,22 @@ div#words {
 	align-items: center;
     flex-wrap: wrap;
     overflow: scroll;
-	gap: 6%;
+	gap: 0.5rem;
 	padding: 0.5%;
 	box-shadow: 0 0 1rem #313131, inset 0 0 1rem #a2a2a2;
 	border-radius: 4rem;
 	cursor: pointer;
 	background: rgba(200,200,200,0.2);
 }
-div#words>span:hover {
+div#words>span:hover{
 	font-size: 3rem;
 }
-div#words>span {
+div#words>span{
 	height: fit-content;
-	width: 20%;
+	width: fit-content;
 	background: rgba(230,230,230,0.7);
 	font-size: 1.5rem;
-	min-width: 120px;
+	padding: 0.3rem 1rem;
 	text-transform: capitalize;
 	box-shadow: inset 0 0 1rem #5f5f5f, 0 0 0.5rem #3a3a3a;
 	border-radius: 2rem;
@@ -909,7 +1025,7 @@ div#words>span {
 	border-radius: 2rem;
 	text-align: center;
 }
-.inputup {
+.inputup{
 	height: 10%;
 	width: 80%;
 	border: none;
@@ -922,6 +1038,20 @@ div#words>span {
 }
 .mini_user{
 	width: 8rem;
+}
+.miss {
+	font-size: 3rem;
+	width: 5rem;
+	aspect-ratio: 1;
+	background: rgba(255,255,255,0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 4rem;
+	box-shadow: inset 0 0 2rem 1rem #adadad, 0 0 2rem 0.5rem #797979;
+	-webkit-box-shadow: inset 0 0 1rem 0.5rem #f1f1f1, 0 0 0.5rem 0.5rem #797979;
+	text-shadow: -0.1rem 0.2rem 0.3rem #f1f1f1;
+	text-transform: capitalize;
 }
 .user,.mini_user{
 	aspect-ratio: 1;
@@ -944,6 +1074,28 @@ div#words>span {
 	aspect-ratio: 1;
 	border-radius: 5vh;
 }
+.word{
+	width: 5rem;
+	aspect-ratio: 1;
+	margin: 0.3rem 0rem;
+	background: rgba(220,220,220,0.5);
+	font-variant: small-caps;
+	border-bottom-style: groove;
+	border-width: 0.8rem;
+	border-radius: 0.5rem 0.5rem 1rem 1rem;
+	text-shadow: 0rem 0.2rem 0.7rem #424242;
+	box-shadow: 0 0 1.3rem 0rem rgba(0,0, 0, 0.5);
+}
+.word_special{
+	width: 2rem;
+	aspect-ratio: 1;
+}
+.letters{
+	display: none;
+	justify-content: center;
+	text-align: center;
+	animation: alert 2s cubic-bezier(0.05, -0.95, 0, 1.5) forwards;
+}
 
 button#signin{
 	height: 30%;
@@ -958,10 +1110,10 @@ button#signin:hover{
 
 a#link_profile{
 	text-decoration: none;
-	color: black
+	color: black;
 }
 
-img#details_img {
+img#details_img{
 	max-width: 85%;
 	max-height: 50%;
 	aspect-ratio: 1;
@@ -973,7 +1125,7 @@ img#users_img{
 	max-width: 90%;
 }
 
-input#wordSlain {
+input#wordSlain{
 	border: none;
 	text-align: center;
 	padding: 2%;
@@ -981,17 +1133,16 @@ input#wordSlain {
 	cursor: pointer;
 }
 
-h1#details_id {
+h1#details_id{
 	font-size: 1.5rem;
 }
 
-h2#details_pts {
+h2#details_pts{
 	height: fit-content;
     width: 80%;
     text-align: center;
     font-size: 5rem;
 }
-
 
 footer{
 	width: 100%;
@@ -1007,5 +1158,7 @@ footer>a{
 footer>a:hover{
 	transform: scale(1.1);
 }
+
+
 
 

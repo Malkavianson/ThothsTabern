@@ -32,7 +32,7 @@
 							<div id='handler'>
 								<%- include("./partials/newword.ejs") %>
 							</div>
-							<div id='init'>
+							<div id='init' onclick="window.location.href='/game/koutia'">
 								<span>GAME</span>
 							</div>
 						</div>
@@ -59,16 +59,14 @@
 			</section>
 		</main>
 		<%- include("./partials/footer.ejs") %>
+		<script src='/js/scripts.js'></script>
 		<script type='text/javascript'> 
+			const everybody = <%- everybody %>;
 			document.onreadystatechange = function () {
 				if (document.readyState === 'complete') {
 					game(user);
 				};
 			};
-		</script>
-		<script src='/js/scripts.js'></script>
-		<script type='text/javascript'> 
-			const everybody = <%- everybody %>;
 		</script>
 	</body>
 </html>

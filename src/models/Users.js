@@ -38,3 +38,9 @@ export const user = connection.define('users',{
 	updateAt: false,
 	timestamps: false,
 });
+
+const initTable = async () => {
+    await users.sync();
+}
+
+initTable();

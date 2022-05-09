@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<title>Thot's tabern</title>
+		<meta charset='uft-8'>
+		<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+		<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+		<link rel='icon' href='/img/icon.png'>
+		<link rel='stylesheet' href='/css/style.css'>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	</head>
+	<body>
+		<%- include("./partials/header.ejs") %>
+		<main>
+		<div id='result'>sobreposição do final</div>
+			<section id='dare'>
+					<!-- <div id='clue'><span><%= clue %></span></div> -->
+					<div id='word'>
+					<% for(let l of word){ %>
+						<% if(l===" "||l==="-"||l==="'"){ %>
+		 						<div class='word_special'><span><%= l %></span></div>
+						<% }else{ %>
+							<div class='word'><span class='letters'><%= l.toLowerCase() %></span></div>
+						<% }; %>
+					<% } %>
+					</div>
+					<div id='miss'></div>
+			</section>
+			<section id='progress'>
+				<div id='status'>
+					<div><span> Escolha uma letra </span></div>
+					<div><span id='t'>Restam 6 tentativas</span></div>
+				</div>
+				<form id='input'>
+					<fieldset form='input' name='input'>
+						<input id='l' type='text' minlength='1' maxlength='1' placeholder='?' required>
+						<button id='submit' pattern='[a-zA-Z]){1}' type='submit'> > </button>
+					</fieldset>
+				</form>
+			</section>
+		</main>
+		<%- include("./partials/footer.ejs") %>
+		<script type='text/javascript'> 
+			let secret = '<%= word.normalize("NFD").replace(/([\u0300-\u036f]|[^a-zA-Z])/g, "").toLowerCase() %>'
+
+			document.onreadystatechange = function () {
+				if (document.readyState === 'complete') {
+
+				};
+			};
+		</script>
+		<script src='/js/scripts.js'></script>
+	</body>
+</html>
