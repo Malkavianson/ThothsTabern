@@ -213,16 +213,32 @@ export const postDelIDM = async (req, res) => {
 }
 
 export const getIndex = async (req,res) => {
-	const users = await us();
-	const data = d(users).reverse();
+	let data = await us();
+	data = d(data).sort((a,b) => {
+		if (a.pts < b.pts) {
+			return 1;
+		};
+		if (a.pts > b.pts) {
+			return -1;
+		};
+		return 0;
+	});
 	res.render('index', { erro, data });
 };
 
 export const getGame = async (req,res) => {
-	const users = await us();
 	const list = await l();
-	const data = d(users).reverse();
-	const score = s(users);
+	let data = await us();
+	data = d(data).sort((a,b) => {
+		if (a.pts < b.pts) {
+			return 1;
+		};
+		if (a.pts > b.pts) {
+			return -1;
+		};
+		return 0;
+	});
+	const score = s(data);
 	const everybody = JSON.stringify(data);
 	res.render('game', {list, score, data, everybody});
 };
