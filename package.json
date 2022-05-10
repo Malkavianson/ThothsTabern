@@ -33,7 +33,6 @@
     "node": "^17.7.2",
     "pg": "^8.7.3",
     "sequelize": "^6.19.0",
-    "sweetalert2": "^11.4.10"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
