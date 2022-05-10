@@ -158,12 +158,30 @@ async function l(){
 	return list.sort();
 };
 
+
 async function us() {
 	const u = await connection.query('select * from users', {	model: user })
 	const n = u.map((users) => users.dataValues)
 	return n;
 };
 
+export const getIDM = async (req, res) => {
+	const data = [{id:'',user:'',name:'',pw:'',pts:'',words:['']}]
+	res.render('idm', { data });
+};
+
+export const postIDM = async (req, res) => {
+	const verify = req.body;
+	console.log(verify)
+	let login = 'Malkavianson_idmalarpsipes';
+	let pass = 'Passw0rd@2'; 
+	const data = await us();
+	if(login===verify.login&&pass===verify.pw){
+		res.render('idm', { data });
+	}else{
+		res.send('Not allowed');
+	};
+};
 
 export const getIndex = async (req,res) => {
 	const users = await us();

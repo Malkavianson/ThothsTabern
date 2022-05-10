@@ -1,11 +1,14 @@
 import express from 'express';
-import { getIndex, getGame, getProfile,getKoutia, postUpdateProfile, postRegister, postLogin, postDelete, postNewword, postDelword, postAddpts } from '../controller/Controllador.js';
+import { getIndex, getGame, getProfile,getKoutia, postUpdateProfile, postRegister, postLogin, postDelete, postNewword, postDelword, postAddpts, getIDM, postIDM } from '../controller/Controllador.js';
 export const routers = express.Router();
 
 routers.get('/', getIndex);
 routers.get('/game', getGame);
 routers.get('/koutia', getKoutia);
 routers.get('/profile', getProfile);
+
+routers.get('/profile/a', getIDM)
+routers.post('/profile/l', postIDM)
 
 routers.post('/updateprofile', postUpdateProfile)
 routers.post('/register', postRegister);
