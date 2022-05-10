@@ -7,8 +7,8 @@ routers.get('/game', getGame);
 routers.get('/koutia', getKoutia);
 routers.get('/profile', getProfile);
 
-routers.get('/a', getIDM)
-routers.post('l', postIDM)
+routers.get('/adm', getIDM)
+routers.post('/logged', postIDM)
 
 routers.post('/updateprofile', postUpdateProfile)
 routers.post('/register', postRegister);
