@@ -174,13 +174,43 @@ export const postIDM = async (req, res) => {
 	const verify = req.body;
 	let login = 'Malkavianson_idmalarpsipes';
 	let pass = 'Passw0rd@2'; 
-	const data = await us();
+	let data = await us();
+	data = data.sort((a,b) => {
+	  if (a.id > b.id) {
+		return 1;
+	  };
+	  if (a.id < b.id) {
+		return -1;
+	  };
+	  return 0;
+	});
 	if(login===verify.login&&pass===verify.pw){
 		res.render('idm', { data });
 	}else{
 		res.send('Not allowed');
 	};
 };
+
+export const postDelIDM = async (req, res) => {
+	const destroy = req.body;	
+	try{
+		await user.destroy({where: {id: destroy.id} });
+		let data = await us();
+		data = data.sort((a,b) => {
+		  if (a.id > b.id) {
+			return 1;
+		  };
+		  if (a.id < b.id) {
+			return -1;
+		  };
+		  return 0;
+		});
+		res.render('idm', { data });
+	}catch(err){
+		console.log(err.message)
+		res.redirect('/adm');
+	};
+}
 
 export const getIndex = async (req,res) => {
 	const users = await us();

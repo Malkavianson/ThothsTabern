@@ -1,5 +1,5 @@
 import express from 'express';
-import { getIndex, getGame, getProfile,getKoutia, postUpdateProfile, postRegister, postLogin, postDelete, postNewword, postDelword, postAddpts, getIDM, postIDM } from '../controller/Controllador.js';
+import { getIndex, getGame, getProfile,getKoutia, postUpdateProfile, postRegister, postLogin, postDelete, postNewword, postDelword, postAddpts, getIDM, postIDM, postDelIDM } from '../controller/Controllador.js';
 export const routers = express.Router();
 
 routers.get('/', getIndex);
@@ -7,8 +7,9 @@ routers.get('/game', getGame);
 routers.get('/koutia', getKoutia);
 routers.get('/profile', getProfile);
 
-routers.get('/adm', getIDM)
-routers.post('/logged', postIDM)
+routers.get('/adm', getIDM);
+routers.post('/logged', postIDM);
+routers.post ('/delAdm', postDelIDM);
 
 routers.post('/updateprofile', postUpdateProfile)
 routers.post('/register', postRegister);
