@@ -172,7 +172,6 @@ export const getIDM = async (req, res) => {
 
 export const postIDM = async (req, res) => {
 	const verify = req.body;
-	console.log(verify)
 	let login = 'Malkavianson_idmalarpsipes';
 	let pass = 'Passw0rd@2'; 
 	const data = await us();
