@@ -37,12 +37,26 @@
 				<%- include("./partials/register.ejs") %>
 			</section>
 		</main>
+		<div id='ask'>
+			<div id='modal_asking'>
+				<span>Este site utiliza cookies para uma experiência completa</span>
+				<button onclick='cookies()'>✔️</button>
+			</div>
+		</div>
 		<%- include("./partials/footer.ejs") %>
 	</body>
 	<script src="/js/scripts.js"></script>
 	<script type='text/javascript'>
 		const err = '<%- erro %>'
+		const ck = localStorage.getItem('cookie');
+
 		document.onreadystatechange = function () {
+			if(ck===null){
+				console.log('não tem');
+				setTimeout(() => {
+						document.getElementById('modal_asking').style.display = 'flex';
+				}, 2000);
+			}
 			isLogged(user);
 			error(err);
 		};	

@@ -75,6 +75,13 @@ function change(a){
 	};
 };
 
+function cookies(){
+
+	localStorage.setItem('cookie', 'ok' );
+	console.log('ok');
+	document.getElementById('ask').style.display = 'none';
+}
+
 function cProfile(a){
 	switch(a){
 		case 'c':
