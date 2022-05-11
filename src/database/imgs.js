@@ -1,0 +1,20 @@
+export default [
+		'https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif',
+		'https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif',
+		'https://c.tenor.com/mXgVRO2zbRoAAAAd/pica-pau.gif',
+		'https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif',
+		'https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif',
+		'https://c.tenor.com/scBmvqDKUeoAAAAM/baby-groot-dancing.gif',
+		'https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif',
+		'https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif',
+		'https://c.tenor.com/z9Y5WAtqlqUAAAAC/baby-yoda-the-mandalorian.gif',
+		'https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif',
+		'https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif',
+		'https://64.media.tumblr.com/6c208d7e56c2608f0ecc7affc136c013/tumblr_pdo66rpjLZ1ww02mqo3_540.gifv',
+		'https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif',
+		'https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif',
+		'http://pa1.narvii.com/6857/854dc7fc55f157f7fafcde7f21f6897f3b4a2f83_00.gif',
+		'https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif',
+		'https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif',
+		'https://pa1.narvii.com/7423/da9c4c7174464b58223cac3e08ac4a2856046c93r1-200-200_hq.gif'
+	]

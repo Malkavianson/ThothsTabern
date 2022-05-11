@@ -11,54 +11,60 @@
 						<legend title='Selecione imagem' for='img'>Selecione imagem</legend>
 						<div>
 							<div id='roll_images'>
+								<%pimg.forEach( i => {%>
 								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif">
-									<img src="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif">
+									<input class='imgd' type="radio" name="imgd" value="<%=i%>">
+									<img src="<%=i%>">
 								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif">
-									<img src="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif">
-									<img src="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif">
-									<img src="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif">
-									<img src="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif">
-									<img src="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif">
-									<img src="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif">
-									<img src="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif">
-									<img src="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif" checked>
-									<img src="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif">
-									<img src="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif">
-								</label>
-								<label>
-									<input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif">
-									<img src="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif">
-								</label>
+								<%})%>
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif"> -->
+									<!-- <img src="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif"> -->
+									<!-- <img src="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif"> -->
+									<!-- <img src="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif"> -->
+									<!-- <img src="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif"> -->
+									<!-- <img src="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif"> -->
+									<!-- <img src="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif"> -->
+									<!-- <img src="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif"> -->
+									<!-- <img src="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif"> -->
+									<!-- <img src="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif" checked> -->
+									<!-- <img src="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif"> -->
+									<!-- <img src="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif"> -->
+								<!-- </label> -->
+								<!-- <label> -->
+									<!-- <input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif"> -->
+									<!-- <img src="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif"> -->
+								<!-- </label> -->
 							</div>
 								<input title='Digite link da imagem' class='inputup' id='img' minlength='1' maxlength='150' type='url' name='img' placeholder='link for image'>
 							<script type='text/javascript'>

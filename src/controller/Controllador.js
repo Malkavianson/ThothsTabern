@@ -1,5 +1,6 @@
 import { connection } from '../database/connection.js';
 import { user } from '../models/Users.js';
+import pimg from '../database/imgs.js';
 import w from '../database/words.js';
 
 const words = w.words;
@@ -244,7 +245,7 @@ export const getGame = async (req,res) => {
 };
 
 export const getProfile = async (req,res) => {
-	res.render('profile');
+	res.render('profile', { pimg });
 };
 
 export const getKoutia = async (req,res) =>{
