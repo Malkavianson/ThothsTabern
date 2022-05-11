@@ -35,10 +35,10 @@ function s(u){
 	
 	let score = [];
 	
-	u.map((user) => {
-		if(user.pts>0){
-			score.push([user.username,user.name,user.pts]);
-		}
+	u.map((us) => {
+		if(us.pts>0){
+			score.push([us.user,us.name,us.pts]);
+		};
 	});
 	score = score.sort((a, b) => {
 		if (a[2] > b[2]) {
@@ -267,7 +267,6 @@ export const postNewword = async (req, res) => {
 	}else{
 		try{
 			if( !w.user || !w.word ){
-				console.log('erro')
 				res.redirect('/game')
 			}else{
 				let users = await us();
@@ -288,7 +287,13 @@ export const postNewword = async (req, res) => {
 };
 
 export const postUpdateProfile = async (req,res) => {
-	const u = req.body;
+	const { username, name, img, pw } = req.body;
+	const u = {
+		user: username,
+		name: name,
+		img: img,
+		pw: pw
+	};
 	try{
 		if( !u.user || !u.name || !u.img || !u.pw ){
 			res.redirect('/')
@@ -331,7 +336,6 @@ export const postRegister = async (req,res) => {
 				res.render('enter', { cookie, novo });
 				novo = false;
 			}catch(err){
-				console.log('não criou')
 				console.log(err)
 					erro = 'ainda';
 					res.render('index', { erro, data });

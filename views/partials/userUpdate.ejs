@@ -3,12 +3,82 @@
 		<fieldset form='update_user' name='update_user'>
 			<legend>Altere seus dados</legend>
 				<div>
-					<label for='user'>USERNAME</label>
-					<input class='inputup' id='user' type='text' name='user' placeholder='' readonly>
-					<label for='name'>NOME</label>
-					<input class='inputup' minlength='1' maxlength='15' id='name' type='text' name='name' placeholder='yourname' required>
-					<label for='img'>link imagem</label>
-					<input class='inputup' id='img' minlength='1' maxlength='150' type='url' name='img' placeholder='link for image' required>
+					<label title='User' for='username'>USERNAME</label>
+					<input title='Username' class='inputup' id='user' type='text' name='username' placeholder='' readonly>
+					<label title='nome' for='name'>NOME</label>
+					<input title='Digite nome' class='inputup' minlength='1' maxlength='15' id='name' type='text' name='name' placeholder='yourname' required>
+					<fieldset name='image'>
+						<legend title='Selecione imagem' for='img'>Selecione imagem</legend>
+						<div>
+							<div id='roll_images'>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif">
+									<img src="https://c.tenor.com/Sh1KPPG9WzkAAAAd/oops-oh-no.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif">
+									<img src="https://c.tenor.com/wD6oAWjW_RUAAAAC/the-seven-deadly-sins-diane.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif">
+									<img src="https://i.giphy.com/tsX3YMWYzDPjAARfeg.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif">
+									<img src="https://media.baamboozle.com/uploads/images/303978/1634716783_909064_gif-url.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif">
+									<img src="https://cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/MZOICWL6FZD4DFA2W6YK2EKMJE.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif">
+									<img src="https://c.tenor.com/8rYvToRbFGMAAAAd/tom-and.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif">
+									<img src="https://c.tenor.com/85wqEkA1qlwAAAAC/plunderer.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif">
+									<img src="https://c.tenor.com/E5pZ7tFqrWQAAAAd/jahy-jahy-sama.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif">
+									<img src="https://i.pinimg.com/originals/cd/5a/54/cd5a54d614bfde15210cbdedbf01f48d.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif" checked>
+									<img src="https://c.tenor.com/9NylYtGTopkAAAAC/senku-dr-stone.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif">
+									<img src="https://i.giphy.com/5bdhq6YF0szPaCEk9Y.gif">
+								</label>
+								<label>
+									<input class='imgd' type="radio" name="imgd" value="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif">
+									<img src="https://i.pinimg.com/originals/48/6e/e3/486ee32bcaac8c277633fc3bc750dfb9.gif">
+								</label>
+							</div>
+								<input title='Digite link da imagem' class='inputup' id='img' minlength='1' maxlength='150' type='url' name='img' placeholder='link for image'>
+							<script type='text/javascript'>
+								const radioc = document.querySelectorAll(".imgd");
+								const desmarcar = document.querySelector("#img");
+								
+								radioc.forEach(r => {
+									r.addEventListener('click', () => {
+										desmarcar.value = r.value
+									});
+								});
+								
+								desmarcar.addEventListener('change', () => {
+									radioc.forEach((input) => {
+										input.checked = false;
+									})
+								});
+							</script>
+						</div>
+					</fieldset>
 					<label for='pw'>SENHA</label>
 					<input class='inputup' id='pw' minlength='1' maxlength='10' type='password' name='pw' placeholder='*****' required>
 				</div>
