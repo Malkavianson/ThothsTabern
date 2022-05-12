@@ -45,7 +45,7 @@
 						<div id="mini">
 							<% data.forEach((d) => { %>
 							<div class="mini_user" onclick="showUser('o','<%= d.user %>')">
-								<img src="<%= d.img %>">
+								<img src="<%= d.img %>" loading="lazy">
 								<span> @<%= d.user %> </span>
 							</div>
 							<% });%>
@@ -63,11 +63,11 @@
 		<script src='/js/scripts.js'></script>
 		<script type='text/javascript'> 
 			const everybody = <%- everybody %>;
-			document.onreadystatechange = function () {
-				if (document.readyState === 'complete') {
+		//	document.onreadystatechange = function () {
+		//		if (document.readyState === 'complete') {
 					game(user);
-				};
-			};
+		//		};
+		//	};
 		</script>
 	</body>
 </html>
